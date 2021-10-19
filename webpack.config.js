@@ -21,7 +21,7 @@ const esLintPlugin = (isDev) =>
   isDev ? [] : [new ESLintPlugin({ extensions: ["ts", "js"] })];
 
 module.exports = ({ development }) => ({
-  mode: "development",
+  mode: development ? "development" : "production",
   devtool: "inline-source-map",
   entry: {
     main: "./src/index.ts",

@@ -1,6 +1,6 @@
-import { newElem } from "../functions/newElem";
-import { BaseComponent } from "./base-component";
-import { Password } from "./password";
+import { newElem } from '../functions/newElem';
+import { BaseComponent } from './base-component';
+import { Password } from './password';
 
 export class SignUp extends BaseComponent {
   private title: HTMLElement;
@@ -27,31 +27,31 @@ export class SignUp extends BaseComponent {
   // private passConfirmViewImg: HTMLElement;
 
   constructor() {
-    super("form", ["side-bar__form"]);
+    super('form', ['side-bar__form']);
 
     this.title = newElem(
-      "label",
-      ["side-bar__form__label", "sign-up"],
-      "Sign Up"
+      'label',
+      ['side-bar__form__label', 'sign-up'],
+      'Sign Up',
     );
 
     this.firstName = <HTMLInputElement>(
-      newElem("input", ["side-bar__form__input"])
+      newElem('input', ['side-bar__form__input'])
     );
-    this.firstName.setAttribute("type", "text");
-    this.firstName.setAttribute("placeholder", "First Name");
+    this.firstName.setAttribute('type', 'text');
+    this.firstName.setAttribute('placeholder', 'First Name');
     this.firstName.style.backgroundImage = 'url("./images/user.png")';
 
     this.lastName = <HTMLInputElement>(
-      newElem("input", ["side-bar__form__input"])
+      newElem('input', ['side-bar__form__input'])
     );
-    this.lastName.setAttribute("type", "text");
-    this.lastName.setAttribute("placeholder", "Last Name");
+    this.lastName.setAttribute('type', 'text');
+    this.lastName.setAttribute('placeholder', 'Last Name');
     this.lastName.style.backgroundImage = 'url("./images/user.png")';
 
-    this.email = <HTMLInputElement>newElem("input", ["side-bar__form__input"]);
-    this.email.setAttribute("type", "email");
-    this.email.setAttribute("placeholder", "Email");
+    this.email = <HTMLInputElement>newElem('input', ['side-bar__form__input']);
+    this.email.setAttribute('type', 'email');
+    this.email.setAttribute('placeholder', 'Email');
     this.email.style.backgroundImage = 'url("./images/email.png")';
 
     // this.password = <HTMLInputElement>(
@@ -66,7 +66,7 @@ export class SignUp extends BaseComponent {
     // this.passConfirmViewImg = this.passViewImg;
 
     // this.passWrapper.append(this.password, this.passViewImg);
-    this.password = new Password("Password", "./images/password.png");
+    this.password = new Password('Password', './images/password.png');
 
     // this.passwordConfirm = <HTMLInputElement>(
     //   newElem("input", ["side-bar__form__input"])
@@ -81,20 +81,20 @@ export class SignUp extends BaseComponent {
     //   // this.passConfirmViewImg
     // );
     this.passwordConfirm = new Password(
-      "Confirm Password",
-      "./images/passConfirm.png"
+      'Confirm Password',
+      './images/passConfirm.png',
     );
 
-    this.submitBtn = newElem("button", ["side-bar__form__submit"]);
-    this.submitBtn.setAttribute("type", "submit");
+    this.submitBtn = newElem('button', ['side-bar__form__submit']);
+    this.submitBtn.setAttribute('type', 'submit');
     this.submitBtn.onclick = (ev) => {
       ev.preventDefault();
     };
     const rightImg = <HTMLImageElement>(
-      newElem("img", ["side-bar__form__submit__inner-img"])
+      newElem('img', ['side-bar__form__submit__inner-img'])
     );
-    rightImg.src = "./images/angle-right-b.png";
-    const submitInnerText = newElem("span", [], "Sign Up");
+    rightImg.src = './images/angle-right-b.png';
+    const submitInnerText = newElem('span', [], 'Sign Up');
     this.submitBtn.append(submitInnerText, rightImg);
 
     this.element.append(
@@ -107,7 +107,7 @@ export class SignUp extends BaseComponent {
       // closedEyeImg,
       this.password.element,
       this.passwordConfirm.element,
-      this.submitBtn
+      this.submitBtn,
     );
   }
 }

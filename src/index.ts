@@ -1,7 +1,7 @@
-import { App } from "./app";
-import "./assets/styles/index.scss";
+import { App } from './app';
+import './assets/styles/index.scss';
 const app = new App();
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 window.onload = () => {
   root?.append(app.element);
 };

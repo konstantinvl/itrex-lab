@@ -24,7 +24,14 @@
   color: #7297ff;
   text-decoration: underline;
 
-  display: flex;
-  align-items: center;
   cursor: pointer;
+}
+
+@media screen and (min-width: 0px) and (max-width: 561px) {
+  .app {
+    flex-direction: column;
+  }
+  .app__main {
+    min-height: 72px;
+  }
 }

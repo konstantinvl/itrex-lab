@@ -14,11 +14,7 @@ export class SignIn extends BaseComponent {
   constructor(passRestoreBtn: HTMLElement) {
     super("form", ["side-bar__form"]);
 
-    this.title = newElem(
-      "label",
-      ["side-bar__form__label", "sign-in"],
-      "Sign In"
-    );
+    this.title = newElem("label", ["side-bar__form__label"], "Sign In");
 
     this.email = <HTMLInputElement>newElem("input", ["side-bar__form__input"]);
     this.email.setAttribute("type", "email");

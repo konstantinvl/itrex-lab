@@ -20,11 +20,7 @@ export class SignUp extends BaseComponent {
   constructor() {
     super("form", ["side-bar__form"]);
 
-    this.title = newElem(
-      "label",
-      ["side-bar__form__label", "sign-up"],
-      "Sign Up"
-    );
+    this.title = newElem("label", ["side-bar__form__label"], "Sign Up");
 
     this.firstName = <HTMLInputElement>(
       newElem("input", ["side-bar__form__input"])

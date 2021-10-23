@@ -1,43 +1,15 @@
-import { newElem } from "../functions/newElem";
-import { BaseComponent } from "./base-component";
-import { Password } from "./password";
+import { LoginComponent } from "./login-component";
 
-export class SignIn extends BaseComponent {
-  private title: HTMLElement;
-
-  private email: HTMLInputElement;
-
-  private password: Password;
-
-  private submitBtn: HTMLElement;
-
+export class SignIn extends LoginComponent {
   constructor(passRestoreBtn: HTMLElement) {
-    super("form", ["side-bar__form"]);
-
-    this.title = newElem("label", ["side-bar__form__label"], "Sign In");
-
-    this.email = <HTMLInputElement>newElem("input", ["side-bar__form__input"]);
-    this.email.setAttribute("type", "email");
-    this.email.setAttribute("placeholder", "Email");
-    this.email.style.backgroundImage = 'url("./images/email.png")';
-
-    this.password = new Password("Password", "./images/password.png");
-
-    this.submitBtn = newElem("button", ["side-bar__form__submit"]);
-    this.submitBtn.setAttribute("type", "submit");
-    this.submitBtn.onclick = (ev) => {
-      ev.preventDefault();
-    };
-    const rightImg = <HTMLImageElement>(
-      newElem("img", ["side-bar__form__submit__inner-img"])
-    );
-    rightImg.src = "./images/angle-right-b.png";
-    this.submitBtn.append("Sign In", rightImg);
+    super("sign-in", "Sign In", "Sign In");
 
     this.element.append(
       this.title,
       this.email,
+      this.emailLabel,
       this.password.element,
+      this.passwordLabel,
       this.submitBtn,
       passRestoreBtn
     );

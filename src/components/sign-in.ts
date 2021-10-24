@@ -6,10 +6,10 @@ export class SignIn extends LoginComponent {
 
     this.element.append(
       this.title,
-      this.email,
       this.emailLabel,
+      this.email,
+
       this.password.element,
-      this.passwordLabel,
       this.submitBtn,
       passRestoreBtn
     );

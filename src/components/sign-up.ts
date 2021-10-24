@@ -6,16 +6,19 @@ export class SignUp extends LoginComponent {
 
     this.element.append(
       this.title,
-      this.firstName,
       this.firstNameLabel,
-      this.lastName,
+      this.firstName,
+
       this.lastNameLabel,
-      this.email,
+      this.lastName,
+
       this.emailLabel,
+      this.email,
+
       this.password.element,
-      this.passwordLabel,
+
       this.passwordConfirm.element,
-      this.passwordConfirmLabel,
+
       this.submitBtn
     );
   }

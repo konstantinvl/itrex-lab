@@ -37,7 +37,7 @@ export class SideBar extends BaseComponent {
 
     this.signUp = new SignUp();
     this.signIn = new SignIn(this.passRestoreBtn);
-    this.passRestore = new PassRestore(this.startSignIn.bind(this));
+    this.passRestore = new PassRestore(/*this.startSignIn.bind(this)*/);
 
     this.signUpBtn.onclick = () =>
       window.history.pushState(null, "", "/sign-up");

@@ -2,7 +2,7 @@ import { newElem } from "../functions/newElem";
 import { LoginComponent } from "./login-component";
 
 export class PassRestore extends LoginComponent {
-  constructor(callback: () => void) {
+  constructor() {
     super("password", "Restore Password", "Send Reset Link");
 
     const leftImg = <HTMLImageElement>(
@@ -10,7 +10,7 @@ export class PassRestore extends LoginComponent {
     );
     leftImg.src = "./images/angle-left-b.png";
     leftImg.setAttribute("alt", "Back to Sign In page");
-    leftImg.onclick = () => callback();
+    leftImg.onclick = () => window.history.pushState(null, "", "/sign-in");
     this.title.prepend(leftImg);
 
     this.text.innerHTML =
@@ -19,8 +19,8 @@ export class PassRestore extends LoginComponent {
     this.element.append(
       this.title,
       this.text,
-      this.email,
       this.emailLabel,
+      this.email,
       this.submitBtn
     );
   }

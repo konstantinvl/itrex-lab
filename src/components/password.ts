@@ -6,6 +6,8 @@ export class Password extends BaseComponent {
 
   private viewImg: HTMLElement;
 
+  private label: HTMLElement;
+
   private show = false;
 
   constructor(placeholder: string, backgroundImg: string) {
@@ -14,14 +16,22 @@ export class Password extends BaseComponent {
     this.input = <HTMLInputElement>newElem("input", ["side-bar__form__input"]);
     this.input.setAttribute("type", "password");
     this.input.setAttribute("placeholder", placeholder);
+    this.input.setAttribute("id", placeholder.split(" ").join(""));
     this.input.style.backgroundImage = `url("${backgroundImg}")`;
+
+    this.label = newElem(
+      "label",
+      ["side-bar__form__input-label"],
+      "Password Confirm"
+    );
+    this.label.setAttribute("for", placeholder.split(" ").join(""));
 
     this.viewImg = newElem("div", ["side-bar__form__view-img"]);
     this.viewImg.style.background = "url(./images/view.png)";
     this.viewImg.setAttribute("alt", "Reveal entered password");
     this.viewImg.onclick = () => this.setShow();
 
-    this.element.append(this.input, this.viewImg);
+    this.element.append(this.label, this.input, this.viewImg);
   }
 
   setShow() {

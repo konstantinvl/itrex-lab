@@ -17,10 +17,10 @@ export class LoginComponent extends BaseComponent {
   public emailLabel: HTMLElement;
 
   public password: Password;
-  public passwordLabel: HTMLElement;
+  // public passwordLabel: HTMLElement;
 
   public passwordConfirm: Password;
-  public passwordConfirmLabel: HTMLElement;
+  // public passwordConfirmLabel: HTMLElement;
 
   public submitBtn: HTMLElement;
 
@@ -72,25 +72,11 @@ export class LoginComponent extends BaseComponent {
     this.emailLabel.setAttribute("for", "Email");
 
     this.password = new Password("Password", "./images/password.png");
-    this.password.element.setAttribute("id", "Password");
-    this.passwordLabel = newElem(
-      "label",
-      ["side-bar__form__input-label"],
-      "Password"
-    );
-    this.passwordLabel.setAttribute("for", "Password");
 
     this.passwordConfirm = new Password(
       "Confirm Password",
       "./images/passConfirm.png"
     );
-    this.passwordConfirm.element.setAttribute("id", "PasswordConfirm");
-    this.passwordConfirmLabel = newElem(
-      "label",
-      ["side-bar__form__input-label"],
-      "Password Confirm"
-    );
-    this.passwordConfirmLabel.setAttribute("for", "PasswordConfirm");
 
     this.submitBtn = newElem("button", ["side-bar__form__submit"]);
     this.submitBtn.setAttribute("type", "submit");

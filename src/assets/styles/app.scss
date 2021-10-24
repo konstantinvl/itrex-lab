@@ -1,11 +1,7 @@
 .app {
-  background-image: url(../images/bg.png);
-
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -14,6 +10,10 @@
   display: flex;
   flex: 1;
   height: 100vh;
+  background-image: url(../images/bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .link-blue-underline {

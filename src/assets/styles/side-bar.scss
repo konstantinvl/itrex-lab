@@ -64,8 +64,8 @@
     &__input-label {
       margin: 0;
       visibility: collapse;
-      height: 0;
-      width: 0;
+      height: 0px;
+      width: 0px;
       position: relative;
     }
     &__submit {
@@ -130,6 +130,9 @@
   width: 368px;
   height: 56px;
   position: relative;
+  & label {
+    position: absolute;
+  }
 }
 
 @media screen and (min-width: 0px) and (max-width: 561px) {

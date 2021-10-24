@@ -52,7 +52,7 @@ export class SideBar extends BaseComponent {
 
     this.element.append(this.formWrapper, this.footerNote);
 
-    this.startSignUp();
+    // this.startSignUp();
   }
 
   public startSignUp(): void {

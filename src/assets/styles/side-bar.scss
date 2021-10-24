@@ -83,6 +83,9 @@
       font-weight: 600;
       line-height: 24px;
       color: #ffffff;
+      & > * {
+        cursor: pointer;
+      }
       &__inner-img {
         margin-left: 8px;
       }

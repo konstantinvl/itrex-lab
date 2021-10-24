@@ -39,9 +39,16 @@ export class SideBar extends BaseComponent {
     this.signIn = new SignIn(this.passRestoreBtn);
     this.passRestore = new PassRestore(this.startSignIn.bind(this));
 
-    this.signUpBtn.onclick = () => this.startSignUp();
-    this.signInBtn.onclick = () => this.startSignIn();
-    this.passRestoreBtn.onclick = () => this.startPassRestore();
+    this.signUpBtn.onclick = () =>
+      window.history.pushState(null, "", "/sign-up");
+    this.signInBtn.onclick = () =>
+      /*this.startSignIn();*/ window.history.pushState(null, "", "/sign-in");
+    this.passRestoreBtn.onclick = () =>
+      /*this.startPassRestore();*/ window.history.pushState(
+        null,
+        "",
+        "/password-restore"
+      );
 
     this.element.append(this.formWrapper, this.footerNote);
 
@@ -53,17 +60,17 @@ export class SideBar extends BaseComponent {
     this.formWrapper.append(this.signUp.element);
     this.footerNote.innerHTML = "";
     this.footerNote.append("Already have an account?", this.signInBtn);
-    console.log("gogo");
+    // console.log("gogo");
   }
 
-  private startSignIn(): void {
+  public startSignIn(): void {
     this.formWrapper.innerHTML = "";
     this.formWrapper.append(this.signIn.element);
     this.footerNote.innerHTML = "";
     this.footerNote.append("Don't have an account?", this.signUpBtn);
   }
 
-  private startPassRestore(): void {
+  public startPassRestore(): void {
     this.formWrapper.innerHTML = "";
     this.formWrapper.append(this.passRestore.element);
     this.footerNote.innerHTML = "";

@@ -1,8 +1,8 @@
-import { LoginComponent } from "./login-component";
+import { LoginComponent } from './login-component';
 
 export class SignUp extends LoginComponent {
   constructor() {
-    super("sign-up", "Sign Up", "Sign Up");
+    super('sign-up', 'Sign Up', 'Sign Up');
 
     this.element.append(
       this.title,
@@ -22,7 +22,7 @@ export class SignUp extends LoginComponent {
 
       this.passwordConfirm.element,
 
-      this.submitBtn
+      this.submitBtn,
     );
   }
 }

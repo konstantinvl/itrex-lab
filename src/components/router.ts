@@ -1,11 +1,11 @@
-import { Route, RouterOptions } from "../shared/interfaces";
+import { Route, RouterOptions } from '../shared/interfaces';
 
 class Router {
   routes: Route[] = [];
 
   // mode = null;
 
-  root = "/";
+  root = '/';
 
   interval: NodeJS.Timeout;
 
@@ -40,16 +40,16 @@ class Router {
   };
 
   clearSlashes = (path: string) =>
-    path.toString().replace(/\/$/, "").replace(/^\//, "");
+    path.toString().replace(/\/$/, '').replace(/^\//, '');
 
   getFragment = () => {
-    let fragment = "";
+    let fragment = '';
     // if (this.mode === "history") {
     fragment = this.clearSlashes(
-      decodeURI(window.location.pathname + window.location.search)
+      decodeURI(window.location.pathname + window.location.search),
     );
-    fragment = fragment.replace(/\?(.*)$/, "");
-    fragment = this.root !== "/" ? fragment.replace(this.root, "") : fragment;
+    fragment = fragment.replace(/\?(.*)$/, '');
+    fragment = this.root !== '/' ? fragment.replace(this.root, '') : fragment;
     // } else {
     //   const match = window.location.href.match(/#(.*)$/);
     //   fragment = match ? match[1] : "";
@@ -57,12 +57,12 @@ class Router {
     return this.clearSlashes(fragment);
   };
 
-  navigate = (path = "") => {
+  navigate = (path = '') => {
     // if (this.mode === "history") {
     window.history.pushState(
       null,
-      "" /*null*/,
-      this.root + this.clearSlashes(path)
+      '' /*null*/,
+      this.root + this.clearSlashes(path),
     );
     // } else {
     //   window.location.href = `${window.location.href.replace(
@@ -83,7 +83,7 @@ class Router {
       return;
     }
     this.current = this.getFragment();
-    console.log("yaya");
+    console.log('yaya');
     this.routes.some((route) => {
       const match = this.current?.match(route.path);
       console.log(match);

@@ -1,7 +1,7 @@
-import { BaseComponent } from "../../base-component";
+import { BaseComponent } from '../../base-component';
 
 export class MainTop extends BaseComponent {
   constructor() {
-    super("div", ["app__app__main__top"]);
+    super('div', ['app__app__main__top']);
   }
 }

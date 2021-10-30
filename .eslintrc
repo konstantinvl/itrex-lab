@@ -18,7 +18,7 @@
     "consistent-return": "off",
     "no-plusplus": "off",
     "no-console": "warn",
-    "max-len": ["error", { "code": 90 }],
+    "max-len": ["error", { "code": 140 }],
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "no-param-reassign": [

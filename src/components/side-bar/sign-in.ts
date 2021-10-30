@@ -1,11 +1,11 @@
-import { LoginComponent } from "./login-component";
+import { LoginComponent } from './login-component';
 
 export class SignIn extends LoginComponent {
   constructor(passRestoreBtn: HTMLElement) {
-    super("sign-in", "Sign In", "Sign In");
+    super('sign-in', 'Sign In', 'Sign In');
     this.submitBtn.onclick = (ev) => {
       ev.preventDefault();
-      window.history.pushState(null, "", "/doctor-view");
+      window.history.pushState(null, '', '/doctor-view');
     };
     this.element.append(
       this.title,
@@ -15,7 +15,7 @@ export class SignIn extends LoginComponent {
 
       this.password.element,
       this.submitBtn,
-      passRestoreBtn
+      passRestoreBtn,
     );
   }
 }

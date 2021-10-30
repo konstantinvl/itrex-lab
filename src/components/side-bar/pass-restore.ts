@@ -1,20 +1,20 @@
-import { newElem } from "../../shared/newElem";
-import { LoginComponent } from "./login-component";
+import { newElem } from '../../shared/newElem';
+import { LoginComponent } from './login-component';
 
 export class PassRestore extends LoginComponent {
   constructor() {
-    super("password", "Restore Password", "Send Reset Link");
+    super('password', 'Restore Password', 'Send Reset Link');
 
     const leftImg = <HTMLImageElement>(
-      newElem("img", ["side-bar__form__label__inner-img"])
+      newElem('img', ['side-bar__form__label__inner-img'])
     );
-    leftImg.src = "./images/angle-left-b.png";
-    leftImg.setAttribute("alt", "Back to Sign In page");
-    leftImg.onclick = () => window.history.pushState(null, "", "/sign-in");
+    leftImg.src = './images/angle-left-b.png';
+    leftImg.setAttribute('alt', 'Back to Sign In page');
+    leftImg.onclick = () => window.history.pushState(null, '', '/sign-in');
     this.title.prepend(leftImg);
 
     this.text.innerHTML =
-      "Please use your email address, and we’ll send you the link to reset your password";
+      'Please use your email address, and we’ll send you the link to reset your password';
 
     this.element.append(
       this.title,
@@ -22,14 +22,14 @@ export class PassRestore extends LoginComponent {
       this.emailLabel,
       this.email,
       this.emailValidation,
-      this.submitBtn
+      this.submitBtn,
     );
   }
 
   sendEmail(): void {
     this.text.innerHTML = `An email has been sent to <span class="link-blue-underline">
     ${this.email.value}</span>. Check your inbox, and click the reset link provided.`;
-    this.email.value = "";
+    this.email.value = '';
     this.email.remove();
     this.submitBtn.remove();
   }

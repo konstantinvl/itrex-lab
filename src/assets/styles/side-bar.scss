@@ -1,0 +1,310 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 560px;
+  height: 100%;
+  min-height: 100%;
+  background: #f4f7ff;
+  transition: all 0.5s;
+  & > * {
+    margin-left: 95px;
+  }
+  &__form-wrapper {
+    display: flex;
+    flex: 1;
+  }
+  &__footerNote {
+    height: 24px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-self: flex-end;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    & .link-blue-underline {
+      margin-left: 12px;
+    }
+  }
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    &.sign-up {
+      margin-top: 50px;
+    }
+
+    & > * ~ * {
+      margin-top: 40px;
+    }
+    &.password {
+      margin-bottom: 70px;
+    }
+    &__input {
+      color: #a1abc9;
+      width: 368px;
+      height: 56px;
+      background: #ffffff;
+      border: 1px solid #dce0ec;
+      box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+      border-radius: 8px;
+      padding-left: 64px;
+      padding-right: 45px;
+      background-position: 24px;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      &:focus-visible {
+        outline: none;
+        filter: drop-shadow(4px 32px rgba(218, 228, 255, 0.16));
+        border: 1px solid #7297ff;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
+      }
+    }
+
+    &__input-validation {
+      visibility: hidden;
+      margin-top: 8px;
+      height: 16px;
+      font-size: 13px;
+      line-height: 120%;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.24px;
+
+      color: #f6657f;
+      & ~ input {
+        margin-top: 16px;
+      }
+      & ~ div {
+        margin-top: 16px;
+      }
+      &.show-validation-text {
+        visibility: visible;
+      }
+    }
+    &__input-label {
+      margin: 0;
+      visibility: collapse;
+      height: 0px;
+      width: 0px;
+      position: relative;
+    }
+    &__submit {
+      cursor: pointer;
+      border: none;
+      box-shadow: none;
+      margin-top: 40px;
+      height: 56px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      background-color: #7297ff;
+      border-radius: 8px;
+      font-weight: 600;
+      line-height: 24px;
+      color: #ffffff;
+      & > * {
+        cursor: pointer;
+      }
+      &__inner-img {
+        margin-left: 8px;
+      }
+    }
+    &__label {
+      height: 32px;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 110%;
+      display: flex;
+      align-items: center;
+      color: #202225;
+      &__inner-img {
+        margin-right: 16px;
+        cursor: pointer;
+      }
+    }
+    &__text {
+      margin-top: 32px;
+      width: 368px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 130%;
+      text-align: left;
+      color: #a1abc9;
+    }
+    &__view-img {
+      margin: 0;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      height: 24px;
+      width: 24px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+    }
+  }
+}
+.forgot-pass {
+  margin-top: 32px;
+}
+.pass-wrapper {
+  width: 368px;
+  position: relative;
+  // min-height: 96px;
+  & label {
+    position: absolute;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 561px) {
+  html,
+  body {
+    overflow: auto;
+  }
+  .side-bar {
+    margin-top: -28px;
+    width: 100%;
+    border-radius: 24px 24px 0px 0px;
+    height: 100%;
+    min-height: 568px;
+    // height: unset;
+    justify-content: space-between;
+    &__form-wrapper {
+      // height: unset;
+      flex: unset;
+      margin-left: unset;
+    }
+
+    &__footerNote {
+      height: unset;
+      margin-left: 10%;
+      // margin-top: 72px;
+      margin-bottom: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      & .link-blue-underline {
+        margin-left: 0;
+      }
+    }
+    &__form {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      &.sign-up {
+        margin-top: 0px;
+      }
+      &.password {
+        margin-bottom: 0px;
+      }
+      & > * {
+        margin-left: 10%;
+        width: 80%;
+      }
+      & > * ~ * {
+        margin-top: 24px;
+      }
+      &__input {
+        height: 40px;
+        font-size: 15px;
+        padding-left: 48px;
+        background-position: 16px;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+      &__input-validation {
+        visibility: hidden;
+        height: 0px;
+        margin-top: 0px;
+
+        & ~ input {
+          margin-top: 24px;
+        }
+        & ~ div {
+          margin-top: 24px;
+        }
+        &.show-validation-text {
+          visibility: visible;
+          height: 32px;
+          margin-top: 14px;
+        }
+      }
+      &__input-label {
+        margin: 0;
+        visibility: collapse;
+        height: 0;
+        width: 0;
+        position: relative;
+      }
+
+      &__submit {
+        width: unset;
+
+        box-shadow: none;
+        margin-top: 32px;
+        height: 48px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 19.5px;
+        & span {
+          display: flex;
+          align-self: center;
+          font-size: 15px;
+        }
+      }
+      &__label {
+        height: 32px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+        margin-top: 32px;
+        &__inner-img {
+          margin-right: 16px;
+          cursor: pointer;
+        }
+      }
+      &__text {
+        margin-top: 32px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 130%;
+        text-align: left;
+        color: #a1abc9;
+      }
+      &__view-img {
+        // margin: 0;
+        right: calc(10% + 16px);
+        top: 8px;
+      }
+    }
+  }
+  .pass-wrapper {
+    width: 100%;
+    // height: 40px;
+    position: relative;
+    margin-left: 0;
+    & input {
+      margin-left: 10%;
+      width: 80%;
+    }
+    & span {
+      margin-left: 10%;
+      width: 80%;
+    }
+  }
+}
+.hide {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

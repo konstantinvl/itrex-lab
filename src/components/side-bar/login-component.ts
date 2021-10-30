@@ -1,5 +1,5 @@
-import { newElem } from "../functions/newElem";
-import { BaseComponent } from "./base-component";
+import { newElem } from "../../shared/newElem";
+import { BaseComponent } from "../base-component";
 import { Password } from "./password";
 
 export class LoginComponent extends BaseComponent {
@@ -9,18 +9,19 @@ export class LoginComponent extends BaseComponent {
 
   public firstName: HTMLInputElement;
   public firstNameLabel: HTMLElement;
+  public firstNameValidation: HTMLElement;
 
   public lastName: HTMLInputElement;
   public lastNameLabel: HTMLElement;
+  public lastNameValidation: HTMLElement;
 
   public email: HTMLInputElement;
   public emailLabel: HTMLElement;
+  public emailValidation: HTMLElement;
 
   public password: Password;
-  // public passwordLabel: HTMLElement;
 
   public passwordConfirm: Password;
-  // public passwordConfirmLabel: HTMLElement;
 
   public submitBtn: HTMLElement;
 
@@ -44,6 +45,12 @@ export class LoginComponent extends BaseComponent {
       "First Name"
     );
     this.firstNameLabel.setAttribute("for", "FirstName");
+    this.firstNameValidation = newElem(
+      "span",
+      ["side-bar__form__input-validation"],
+      "First Name contain unsupported characters (A-z)"
+    );
+    this.firstName.onchange = () => this.validateFirstName();
 
     this.lastName = <HTMLInputElement>(
       newElem("input", ["side-bar__form__input"])
@@ -58,6 +65,12 @@ export class LoginComponent extends BaseComponent {
       "Last Name"
     );
     this.lastNameLabel.setAttribute("for", "LastName");
+    this.lastNameValidation = newElem(
+      "span",
+      ["side-bar__form__input-validation"],
+      "Last Name contain unsupported characters (A-z)"
+    );
+    this.lastName.onchange = () => this.validateLastName();
 
     this.email = <HTMLInputElement>newElem("input", ["side-bar__form__input"]);
     this.email.setAttribute("type", "email");
@@ -70,7 +83,12 @@ export class LoginComponent extends BaseComponent {
       "Email"
     );
     this.emailLabel.setAttribute("for", "Email");
-
+    this.emailValidation = newElem(
+      "span",
+      ["side-bar__form__input-validation"],
+      "Email contain unsupported characters"
+    );
+    this.email.onchange = () => this.validateEmail();
     this.password = new Password("Password", "./images/password.png");
 
     this.passwordConfirm = new Password(
@@ -90,5 +108,45 @@ export class LoginComponent extends BaseComponent {
     rightImg.setAttribute("alt", submitBtnText);
     const submitInnerText = newElem("span", [], submitBtnText);
     this.submitBtn.append(submitInnerText, rightImg);
+  }
+
+  validateFirstName(): boolean {
+    if (
+      this.firstName.value.match(/[A-z]+/gm)?.join("").length !==
+      this.firstName.value.length
+    ) {
+      this.firstNameValidation.classList.add("show-validation-text");
+      return false;
+    } else {
+      this.firstNameValidation.classList.remove("show-validation-text");
+      return true;
+    }
+  }
+
+  validateLastName(): boolean {
+    if (
+      this.lastName.value.match(/[A-z]+/gm)?.join("").length !==
+      this.lastName.value.length
+    ) {
+      this.lastNameValidation.classList.add("show-validation-text");
+      return false;
+    } else {
+      this.lastNameValidation.classList.remove("show-validation-text");
+      return true;
+    }
+  }
+
+  validateEmail() {
+    if (
+      this.email.value
+        .match(/[A-Za-z0-9_]{2,}[@]{1}[A-Za-z0-9]{3,}[.][A-Za-z]+$/gm)
+        ?.join("").length !== this.email.value.length
+    ) {
+      this.emailValidation.classList.add("show-validation-text");
+      return false;
+    } else {
+      this.emailValidation.classList.remove("show-validation-text");
+      return true;
+    }
   }
 }

@@ -8,12 +8,15 @@ export class SignUp extends LoginComponent {
       this.title,
       this.firstNameLabel,
       this.firstName,
+      this.firstNameValidation,
 
       this.lastNameLabel,
       this.lastName,
+      this.lastNameValidation,
 
       this.emailLabel,
       this.email,
+      this.emailValidation,
 
       this.password.element,
 

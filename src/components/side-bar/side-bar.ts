@@ -1,6 +1,6 @@
-import { BaseComponent } from "./base-component";
-import "../assets/styles/side-bar.scss";
-import { newElem } from "../functions/newElem";
+import { BaseComponent } from "../base-component";
+import "../../assets/styles/side-bar.scss";
+import { newElem } from "../../shared/newElem";
 import { SignUp } from "./sign-up";
 import { SignIn } from "./sign-in";
 import { PassRestore } from "./pass-restore";
@@ -22,7 +22,7 @@ export class SideBar extends BaseComponent {
 
   private passRestoreBtn: HTMLElement;
 
-  constructor() {
+  constructor(/*loginCb:()=>void*/) {
     super("aside", ["side-bar"]);
     this.formWrapper = newElem("div", ["side-bar__form-wrapper"]);
     this.footerNote = newElem("div", ["side-bar__footerNote"]);

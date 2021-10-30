@@ -1,64 +1,54 @@
 import { BaseComponent } from "./components/base-component";
 import "./assets/styles/app.scss";
-import { SideBar } from "./components/side-bar";
-import { newElem } from "./functions/newElem";
+import { SideBar } from "./components/side-bar/side-bar";
+import { newElem } from "./shared/newElem";
 import Router from "./components/router";
+import { MainView } from "./components/mainView/mainView";
 
 export class App extends BaseComponent {
-  public sideBar: SideBar;
+  private sideBar: SideBar;
 
-  private main: HTMLElement;
-
-  // public router: Router;
+  private main: MainView;
 
   constructor() {
     super("div", ["app"]);
     this.sideBar = new SideBar();
 
-    // const routes = [
-    //   {
-    //     route: "sign-in",
-    //     cb: this.sideBar.startSignUp.bind(this.sideBar).bind(this),
-    //   },
-    //   {
-    //     route: "sign-up",
-    //     cb: this.sideBar.startSignUp.bind(this.sideBar).bind(this),
-    //   },
-    //   {
-    //     route: "password-restore",
-    //     cb: this.sideBar.startPassRestore.bind(this.sideBar).bind(this),
-    //   },
-    // ];
-    // this.router = new Router({ root: "/" });
-    // routes.forEach((route) => {
-    //   this.router.add(route.route, route.cb);
-    // });
-    // this.router = new Router({ root: "/" });
+    const router = new Router({ root: "/" });
 
-    // this.router.add("sign-up", this.sideBar.startSignUp.bind(this.sideBar));
-    // this.router.add("sign-in", this.sideBar.startSignIn.bind(this.sideBar));
-    // this.router.add(
-    //   "password-restore",
-    //   this.sideBar.startPassRestore.bind(this.sideBar)
-    // );
+    router.add("sign-up", this.signUp.bind(this));
+    router.add("sign-in", this.signIn.bind(this));
+    router.add("password-restore", this.restorePassword.bind(this));
+    router.add("doctor-view", this.login.bind(this));
 
-    // window.onpopstate = () => {
-    //   this.router.routes
-    //     .find((route) => {
-    //       return (
-    //         route.path === this.router.clearSlashes(window.location.pathname)
-    //       );
-    //     })
-    //     ?.cb();
-    //   console.log(12312312);
-    // };
-
-    this.main = newElem("main", ["app__main"]);
-    this.element.append(this.main, this.sideBar.element);
+    this.main = new MainView();
+    this.element.append(this.main.element, this.sideBar.element);
     this.start();
   }
 
   start() {
     window.history.pushState(null, "", "/sign-up");
+    // this.login();
+  }
+
+  login() {
+    this.sideBar.element.classList.add("hide");
+    this.main.start();
+  }
+
+  signUp() {
+    this.sideBar.element.classList.remove("hide");
+    this.main.stop();
+    this.sideBar.startSignUp();
+  }
+  signIn() {
+    this.sideBar.element.classList.remove("hide");
+    this.main.stop();
+    this.sideBar.startSignIn();
+  }
+  restorePassword() {
+    this.sideBar.element.classList.remove("hide");
+    this.main.stop();
+    this.sideBar.startPassRestore();
   }
 }

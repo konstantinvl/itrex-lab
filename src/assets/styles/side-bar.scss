@@ -4,8 +4,9 @@
   justify-content: center;
   width: 560px;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background: #f4f7ff;
+  transition: all 0.5s;
   & > * {
     margin-left: 95px;
   }
@@ -34,11 +35,12 @@
     &.sign-up {
       margin-top: 50px;
     }
-    &.password {
-      margin-bottom: 70px;
-    }
+
     & > * ~ * {
       margin-top: 40px;
+    }
+    &.password {
+      margin-bottom: 70px;
     }
     &__input {
       color: #a1abc9;
@@ -61,6 +63,28 @@
         box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
       }
     }
+
+    &__input-validation {
+      visibility: hidden;
+      margin-top: 8px;
+      height: 16px;
+      font-size: 13px;
+      line-height: 120%;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.24px;
+
+      color: #f6657f;
+      & ~ input {
+        margin-top: 16px;
+      }
+      & ~ div {
+        margin-top: 16px;
+      }
+      &.show-validation-text {
+        visibility: visible;
+      }
+    }
     &__input-label {
       margin: 0;
       visibility: collapse;
@@ -72,7 +96,7 @@
       cursor: pointer;
       border: none;
       box-shadow: none;
-      margin-top: 64px;
+      margin-top: 40px;
       height: 56px;
       padding: 16px 24px;
       display: flex;
@@ -131,28 +155,36 @@
 }
 .pass-wrapper {
   width: 368px;
-  height: 56px;
   position: relative;
+  // min-height: 96px;
   & label {
     position: absolute;
   }
 }
 
 @media screen and (min-width: 0px) and (max-width: 561px) {
+  html,
+  body {
+    overflow: auto;
+  }
   .side-bar {
+    margin-top: -28px;
     width: 100%;
     border-radius: 24px 24px 0px 0px;
+    height: 100%;
     min-height: 568px;
-    height: unset;
-
+    // height: unset;
+    justify-content: space-between;
     &__form-wrapper {
-      height: unset;
+      // height: unset;
+      flex: unset;
       margin-left: unset;
     }
 
     &__footerNote {
+      height: unset;
       margin-left: 10%;
-      margin-top: 72px;
+      // margin-top: 72px;
       margin-bottom: 44px;
       display: flex;
       flex-direction: column;
@@ -163,7 +195,7 @@
     }
     &__form {
       width: 100%;
-      height: 100%;
+
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -188,6 +220,23 @@
         background-repeat: no-repeat;
         position: relative;
       }
+      &__input-validation {
+        visibility: hidden;
+        height: 0px;
+        margin-top: 0px;
+
+        & ~ input {
+          margin-top: 24px;
+        }
+        & ~ div {
+          margin-top: 24px;
+        }
+        &.show-validation-text {
+          visibility: visible;
+          height: 32px;
+          margin-top: 14px;
+        }
+      }
       &__input-label {
         margin: 0;
         visibility: collapse;
@@ -195,6 +244,7 @@
         width: 0;
         position: relative;
       }
+
       &__submit {
         width: unset;
 
@@ -240,12 +290,21 @@
   }
   .pass-wrapper {
     width: 100%;
-    height: 40px;
+    // height: 40px;
     position: relative;
     margin-left: 0;
     & input {
       margin-left: 10%;
       width: 80%;
     }
+    & span {
+      margin-left: 10%;
+      width: 80%;
+    }
   }
+}
+.hide {
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }

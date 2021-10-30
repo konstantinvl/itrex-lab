@@ -1,4 +1,4 @@
-import { Route, RouterOptions } from "../functions/interfaces";
+import { Route, RouterOptions } from "../shared/interfaces";
 
 class Router {
   routes: Route[] = [];

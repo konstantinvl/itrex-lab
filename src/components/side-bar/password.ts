@@ -1,5 +1,5 @@
-import { newElem } from "../functions/newElem";
-import { BaseComponent } from "./base-component";
+import { newElem } from "../../shared/newElem";
+import { BaseComponent } from "../base-component";
 
 export class Password extends BaseComponent {
   public input: HTMLInputElement;
@@ -9,6 +9,8 @@ export class Password extends BaseComponent {
   private label: HTMLElement;
 
   private show = false;
+
+  private passwordValidation: HTMLElement;
 
   constructor(placeholder: string, backgroundImg: string) {
     super("div", ["pass-wrapper"]);
@@ -31,7 +33,20 @@ export class Password extends BaseComponent {
     this.viewImg.setAttribute("alt", "Reveal entered password");
     this.viewImg.onclick = () => this.setShow();
 
-    this.element.append(this.label, this.input, this.viewImg);
+    this.passwordValidation = newElem(
+      "span",
+      ["side-bar__form__input-validation"],
+      "Password contain unsupported characters"
+    );
+
+    this.input.onchange = () => this.validatePassword();
+
+    this.element.append(
+      this.label,
+      this.input,
+      this.viewImg,
+      this.passwordValidation
+    );
   }
 
   setShow() {
@@ -44,6 +59,19 @@ export class Password extends BaseComponent {
       this.input.setAttribute("type", "password");
       this.viewImg.style.background = "url(./images/view.png)";
       this.viewImg.setAttribute("alt", "Reveal entered password");
+    }
+  }
+
+  public validatePassword(): boolean {
+    if (
+      this.input.value.match(/[A-z0-9]{6,}/gm)?.join("").length !==
+      this.input.value.length
+    ) {
+      this.passwordValidation.classList.add("show-validation-text");
+      return false;
+    } else {
+      this.passwordValidation.classList.remove("show-validation-text");
+      return true;
     }
   }
 }

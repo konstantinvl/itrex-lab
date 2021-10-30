@@ -1,4 +1,4 @@
-import { newElem } from "../functions/newElem";
+import { newElem } from "../../shared/newElem";
 import { LoginComponent } from "./login-component";
 
 export class PassRestore extends LoginComponent {
@@ -21,6 +21,7 @@ export class PassRestore extends LoginComponent {
       this.text,
       this.emailLabel,
       this.email,
+      this.emailValidation,
       this.submitBtn
     );
   }

@@ -1,0 +1,246 @@
+.app__app__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f9faff;
+  box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+  border-radius: 16px;
+  padding: 40px 0px 0px 0px;
+  overflow: hidden;
+  &__top {
+    margin: 0px 48px;
+    flex: 1;
+    min-height: 96px;
+    max-height: 96px;
+    display: flex;
+    &__button {
+      height: 40px;
+      width: 160px;
+      background: #ffffff;
+      box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
+      border-radius: 8px;
+      font-size: 15px;
+      line-height: 140%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      color: #7297ff;
+      & ~ .app__app__main__top__button {
+        margin-left: 12px;
+      }
+      &.active {
+        background: #7297ff;
+        font-weight: 600;
+        line-height: 130%;
+
+        color: #ffffff;
+      }
+    }
+  }
+  &__view {
+    margin-right: 16px;
+
+    flex: 1;
+    max-height: calc(100% - 96px);
+    &__top {
+      padding: 0px 32px 0px 48px;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      &__title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 110%;
+        color: #202225;
+        height: 32px;
+        display: flex;
+        align-items: center;
+      }
+    }
+    &__info-field {
+      padding: 0px 32px 0px 28px;
+      margin-top: 8px;
+      width: 100%;
+      flex: 1;
+      min-height: calc(100% - 40px);
+      max-height: calc(100% - 40px);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: scroll;
+      overflow: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      &::-webkit-scrollbar {
+        margin-top: 24px;
+        width: 12px;
+        background: rgba(#dce0ec, 0.32);
+        opacity: 0.32;
+        border-radius: 8px;
+        max-height: 97%;
+      }
+      &::-webkit-scrollbar-button {
+        width: 0;
+        height: 0;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(#dce0ec, 0.56);
+        opacity: 0.56;
+        border-radius: 8px;
+      }
+
+      &.empty {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      &__message {
+        margin-top: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        &__image {
+          display: flex;
+          height: 120px;
+          width: 120px;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        &__text {
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 140%;
+          color: #a1abc9;
+
+          &:first-of-type {
+            margin-top: 40px;
+          }
+        }
+      }
+      // &__message:first-of-type {
+      //   margin-top: 100px;
+      // }
+    }
+  }
+}
+
+@media screen and (min-width: 561px) and (max-width: 1067px) {
+  .app__app__main__view__info-field {
+    margin-top: 18px;
+    padding-right: 20px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    & .patient-card {
+      // width: 100%;
+      width: unset;
+      flex: 1;
+    }
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 561px) {
+  // .app__app__main__view__info-field {
+  //   margin-top: 18px;
+  //   padding-right: 20px;
+  //   flex-direction: column;
+  //   flex-wrap: nowrap;
+  //   & .patient-card {
+  //     width: unset;
+  //     flex: 1;
+  //   }
+  // }
+
+  .app__app__main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #f9faff;
+    box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.32);
+    border-radius: 16px;
+    padding: 40px 0px 0px 0px;
+    overflow: hidden;
+    &__top {
+      margin: 0px 24px;
+
+      min-height: 80px;
+      max-height: 80px;
+
+      &__button {
+        width: 120px;
+        & ~ .app__app__main__top__button {
+          margin-left: 24px;
+        }
+      }
+    }
+    &__view {
+      margin-right: 6px;
+
+      flex: 1;
+      max-height: calc(100% - 80px);
+      &__top {
+        padding: 0px 18px 0px 24px;
+        height: 32px;
+        display: flex;
+        justify-content: space-between;
+        &__title {
+          font-size: 20px;
+          line-height: 24px;
+        }
+      }
+      &__info-field {
+        padding: 0px 18px 0px 24px;
+        margin-top: 0px;
+        width: 100%;
+        flex: 1;
+        min-height: calc(100% - 40px);
+        max-height: calc(100% - 40px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        overflow: scroll;
+        overflow: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        & .patient-card {
+          width: unset;
+          flex: 1;
+          margin-top: 16px;
+          margin-left: 0;
+        }
+
+        &.empty {
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+        &__message {
+          margin-top: 65px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          &__image {
+            display: flex;
+            height: 120px;
+            width: 120px;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+          &__text {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 140%;
+            color: #a1abc9;
+
+            &:first-of-type {
+              margin-top: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

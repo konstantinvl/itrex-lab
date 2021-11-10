@@ -25,6 +25,9 @@ const Input = styled(Field)`
     }
 
     @media screen and (min-width: 0px) and (max-width: 561px) {
+        margin-left: 10%;
+        width: 80%;
+        margin-top: 24px;
         height: 40px;
         font-size: 15px;
         padding-left: 48px;
@@ -51,13 +54,13 @@ function AuthentificationInput(props: {
     const { type, icon, placeholder } = props;
     return (
         <>
-            <Label htmlFor={type}>{type}</Label>
+            <Label htmlFor={placeholder.split(' ').join('').toLowerCase()}>{type}</Label>
             <Input
-                id={type}
-                name={type}
+                id={placeholder.split(' ').join('').toLowerCase()}
+                name={placeholder.split(' ').join('').toLowerCase()}
                 type={type.toLowerCase()}
                 placeholder={placeholder}
-                style={{ backgroundImage: `url(${process.env.PUBLIC_URL}images/icons/${icon})` }}
+                style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/${icon})` }}
             />
         </>
     );

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
+import PassRestore from './elements/passRestore';
 import SignIn from './elements/signIn';
+import SignUp from './elements/signUp';
 
 const Main = styled.main`
     display: flex;
@@ -12,6 +14,12 @@ const Main = styled.main`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    @media screen and (min-width: 0px) and (max-width: 561px) {
+        width: 100%;
+        min-height: 100px;
+        max-height: 100px;
+        padding: 0;
+    }
 `;
 const Aside = styled.aside`
     display: flex;
@@ -21,15 +29,16 @@ const Aside = styled.aside`
     height: 100%;
     min-height: 100%;
     background: #f4f7ff;
+    @media screen and (min-width: 0px) and (max-width: 561px) {
+        margin-top: -28px;
+        width: 100%;
+        border-radius: 24px 24px 0px 0px;
+        height: 100%;
+        min-height: 568px;
+        justify-content: space-between;
+    }
 `;
 
-// function DashboardIndex() {
-//     return (
-//         <div>
-//             <h2>Dashboard Index</h2>
-//         </div>
-//     );
-// }
 function AuthentificationPage(): JSX.Element {
     return (
         <>
@@ -44,7 +53,8 @@ function AuthentificationPage(): JSX.Element {
                     }
                 >
                     <Route index element={<SignIn />} />
-                    <Route path="olo" element={<div>hui</div>} />
+                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/restorepassword" element={<PassRestore />} />
                 </Route>
             </Routes>
         </>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import LinkBlueUnderlined from '../linkBlueUnderlined';
+import StyledLink from '../linkBlueUnderlined';
 
 const AuthFoot = styled.div`
     height: 24px;
@@ -14,6 +14,18 @@ const AuthFoot = styled.div`
     & a {
         margin-left: 12px;
     }
+    @media screen and (min-width: 0px) and (max-width: 561px) {
+        height: unset;
+        margin-left: 10%;
+        // margin-top: 72px;
+        margin-bottom: 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        & a {
+            margin-left: 0;
+        }
+    }
 `;
 
 function AuthentificationFooter(props: {
@@ -25,7 +37,7 @@ function AuthentificationFooter(props: {
     return (
         <AuthFoot>
             {text}
-            <LinkBlueUnderlined text={linkText} navigation={linkNavigation} />
+            <StyledLink to={linkNavigation}>{linkText}</StyledLink>
         </AuthFoot>
     );
 }

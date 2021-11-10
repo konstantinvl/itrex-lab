@@ -6,7 +6,7 @@ const Button = styled.button`
     border: none;
     box-shadow: none;
     margin-top: 40px;
-    margin-bottom: 32px;
+
     height: 56px;
     padding: 16px 24px;
     display: flex;
@@ -27,7 +27,7 @@ const Button = styled.button`
 
     @media screen and (min-width: 0px) and (max-width: 561px) {
         width: unset;
-
+        margin-left: 10%;
         box-shadow: none;
         margin-top: 32px;
         height: 48px;
@@ -53,7 +53,7 @@ function SubmitButton(props: { text: string }): JSX.Element {
     return (
         <Button type="submit">
             <span>{text}</span>
-            <Image src={`${process.env.PUBLIC_URL}images/icons/angle-right-b.png`} alt={text} />
+            <Image src={`${process.env.PUBLIC_URL}/images/icons/angle-right-b.png`} alt={text} />
         </Button>
     );
 }

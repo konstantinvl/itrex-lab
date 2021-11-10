@@ -17,7 +17,8 @@ const Wrapper = styled.div`
         width: 100%;
         // height: 40px;
         position: relative;
-        margin-left: 0;
+        margin-top: 24px;
+        margin-left: 0px;
         & input {
             margin-left: 10%;
             width: 80%;
@@ -57,7 +58,7 @@ function AuthentificationPasswordInput(props: { placeholder: string; icon: strin
                 placeholder={placeholder}
             />
             <ViewImg
-                src={`${process.env.PUBLIC_URL}images/icons/${show ? 'view.png' : 'hidden.png'}`}
+                src={`${process.env.PUBLIC_URL}/images/icons/${show ? 'view.png' : 'hidden.png'}`}
                 alt={show ? 'Show password' : 'Hide password'}
                 onClick={() => setShow(!show)}
             />

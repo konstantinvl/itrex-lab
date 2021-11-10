@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import AuthentificationPage from './pages/authentificationPage/authentificationPage';
+import View from './pages/view/view';
 
 const AppPage = styled.div`
     width: 100%;
@@ -11,6 +12,10 @@ const AppPage = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
     background-color: #e4ebff;
+
+    @media screen and (min-width: 0px) and (max-width: 561px) {
+        flex-direction: column;
+    }
 `;
 
 function App(): JSX.Element {
@@ -19,7 +24,8 @@ function App(): JSX.Element {
             <BrowserRouter>
                 <Routes>
                     <Route path="/auth/*" element={<AuthentificationPage />} />
-                    <Route path="/" element={<Navigate to="/auth" />} />
+                    <Route path="/view/*" element={<View />} />
+                    <Route path="/" element={<Navigate to="/view" />} />
                 </Routes>
             </BrowserRouter>
         </AppPage>

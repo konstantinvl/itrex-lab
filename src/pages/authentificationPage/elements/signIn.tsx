@@ -1,13 +1,18 @@
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
+import styled from 'styled-components';
 import AuthentificationFooter from '../../../sharedComponents/authentification/authentificationFooter';
 import AuthentificationInput from '../../../sharedComponents/authentification/authInput';
 import AuthentificationTitle from '../../../sharedComponents/authentification/authTitle';
 import InputError from '../../../sharedComponents/authentification/errorText';
 import AuthentificationPasswordInput from '../../../sharedComponents/authentification/passwordInput';
 import SubmitButton from '../../../sharedComponents/authentification/submitButton';
-import LinkBlueUnderlined from '../../../sharedComponents/linkBlueUnderlined';
+import StyledLink from '../../../sharedComponents/linkBlueUnderlined';
+import {
+    FormWrapper,
+    FormStyled,
+} from '../../../sharedComponents/authentification/authentificationForm';
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Please enter the Email'),
@@ -17,32 +22,34 @@ const SignupSchema = Yup.object().shape({
         .required('Please enter the password'),
 });
 
-const formStyle = {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-};
+const LinkBlueStyled = styled(StyledLink)`
+    margin-top: 32px;
+    @media screen and (min-width: 0px) and (max-width: 561px) {
+        margin-left: 10%;
+        width: 80%;
+    }
+`;
 
 function SignIn(): JSX.Element {
     return (
         <>
-            <div style={{ display: 'flex', flex: 1, marginLeft: '95px' }}>
+            <FormWrapper>
                 <Formik
                     initialValues={{
                         email: '',
                         password: '',
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={(values) => {
-                        // same shape as initial values
-                        console.log(values);
-                    }}
+                    onSubmit={
+                        (/* values */) => {
+                            // same shape as initial values
+                            // console.log(values);
+                        }
+                    }
                 >
                     {({ errors, touched }) => (
-                        <Form style={formStyle as Record<string | number, string>}>
-                            <AuthentificationTitle title="Sign In" img="" />
+                        <FormStyled>
+                            <AuthentificationTitle title="Sign In" img="" link={null} />
 
                             <AuthentificationInput
                                 type="email"
@@ -60,18 +67,17 @@ function SignIn(): JSX.Element {
                             />
                             <SubmitButton text="Sign In" />
 
-                            <LinkBlueUnderlined
-                                text="Forgot Password?"
-                                navigation="/auth/restorepassword"
-                            />
-                        </Form>
+                            <LinkBlueStyled to="/auth/restorepassword">
+                                Forgot Password?
+                            </LinkBlueStyled>
+                        </FormStyled>
                     )}
                 </Formik>
-            </div>
+            </FormWrapper>
             <AuthentificationFooter
                 text="Don’t have an account?"
                 linkText="Sign up"
-                linkNavigation="/auth/signup"
+                linkNavigation="/auth/sign-up"
             />
         </>
     );

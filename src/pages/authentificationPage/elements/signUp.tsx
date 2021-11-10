@@ -24,11 +24,17 @@ const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Please enter the Email'),
     password: Yup.string()
         .min(6, 'Should be at least 6 characters long')
-        .matches(/[A-z]{1,}[0-9]{1,}/gm, 'Should contain of at least 1 letter and 1 number')
+        .matches(
+            /([0-9]+)([A-z]+)|([A-z]+)([0-9]+)/gm,
+            'Should contain of at least 1 letter and 1 number',
+        )
         .required('Please enter the password'),
     comfirmpassword: Yup.string()
         .min(6, 'Should be at least 6 characters long')
-        .matches(/[A-z]{1,}[0-9]{1,}/gm, 'Should contain of at least 1 letter and 1 number')
+        .matches(
+            /([0-9]+)([A-z]+)|([A-z]+)([0-9]+)/gm,
+            'Should contain of at least 1 letter and 1 number',
+        )
         .required('Please enter the password'),
 });
 
@@ -45,12 +51,7 @@ function SignUp(): JSX.Element {
                         comfirmpassword: '',
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={
-                        (/* values */) => {
-                            // same shape as initial values
-                            // console.log(values);
-                        }
-                    }
+                    onSubmit={(/* values */) => {}}
                 >
                     {({ errors, touched }) => (
                         <FormStyled>

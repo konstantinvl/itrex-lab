@@ -85,7 +85,7 @@ function ProfileMini(): JSX.Element {
         <Profile
             onClick={() => {
                 dispatch(setUser(user.status === 'Doctor' ? PATIENT : DOCTOR));
-                navigate('/');
+                navigate('/view');
             }}
         >
             <InfoWrapper>

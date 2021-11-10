@@ -2,6 +2,7 @@ import { Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import AuthentificationFooter from '../../../sharedComponents/authentification/authentificationFooter';
 import AuthentificationInput from '../../../sharedComponents/authentification/authInput';
 import AuthentificationTitle from '../../../sharedComponents/authentification/authTitle';
@@ -18,7 +19,10 @@ const SignupSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Please enter the Email'),
     password: Yup.string()
         .min(6, 'Should be at least 6 characters long')
-        .matches(/[A-z]{1,}[0-9]{1,}/gm, 'Should contain of at least 1 letter and 1 number')
+        .matches(
+            /([0-9]+)([A-z]+)|([A-z]+)([0-9]+)/gm,
+            'Should contain of at least 1 letter and 1 number',
+        )
         .required('Please enter the password'),
 });
 
@@ -31,6 +35,7 @@ const LinkBlueStyled = styled(StyledLink)`
 `;
 
 function SignIn(): JSX.Element {
+    const navigate = useNavigate();
     return (
         <>
             <FormWrapper>
@@ -42,8 +47,7 @@ function SignIn(): JSX.Element {
                     validationSchema={SignupSchema}
                     onSubmit={
                         (/* values */) => {
-                            // same shape as initial values
-                            // console.log(values);
+                            navigate('/view');
                         }
                     }
                 >

@@ -61,7 +61,7 @@ function SignIn(): JSX.Element {
                                 placeholder="Email"
                             />
                             <InputError text={errors.email && touched.email ? errors.email : ''} />
-                            {}
+
                             <AuthentificationPasswordInput
                                 icon="password.png"
                                 placeholder="Password"

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { CANCELED, CONFIRMED, WAITING } from '../constants';
-import { DoctorViewAppointment } from '../interfaces';
-import Indicator from '../roundIndicator';
+import { CANCELED, CONFIRMED, WAITING } from '../../constants';
+import { DoctorViewAppointment } from '../../interfaces';
+import Indicator from '../../roundIndicator';
 
 const Card = styled.div`
     height: 264px;

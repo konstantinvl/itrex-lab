@@ -1,10 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { useAppSelector } from '../../store/hooks';
-import { DataSet } from '../interfaces';
-import ViewCard from './viewCard.Component';
-import ViewMainFieldControl from './viewMainFieldControls.Component';
 
 const ViewMainFieldInfo = styled.div`
     padding: 0px 32px 0px 28px;
@@ -29,10 +24,10 @@ const ViewMainFieldInfo = styled.div`
         border-radius: 8px;
         max-height: 97%;
     }
-    &::-webkit-scrollbar-button {
+    /* &::-webkit-scrollbar-button {
         width: 0;
         height: 0;
-    }
+    } */
     &::-webkit-scrollbar-thumb {
         background: ${rgba('#dce0ec', 0.56)};
         opacity: 0.56;
@@ -52,20 +47,4 @@ const ViewMainFieldInfo = styled.div`
     }
 `;
 
-function ViewMainField(props: { data: DataSet }): JSX.Element {
-    const { user } = useAppSelector((state) => state.user);
-    const { data } = props;
-    const { title, dataSet } = data;
-    return (
-        <>
-            <ViewMainFieldControl title={`My ${title}`} />
-            <ViewMainFieldInfo>
-                {dataSet?.map((info) => {
-                    return <ViewCard info={info} status={user.status} key={info.name} />;
-                })}
-            </ViewMainFieldInfo>
-        </>
-    );
-}
-
-export default ViewMainField;
+export default ViewMainFieldInfo;

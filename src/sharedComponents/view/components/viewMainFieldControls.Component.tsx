@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ControlPanel = styled.div`
+export const ControlPanel = styled.div`
     padding: 0px 32px 0px 48px;
     height: 32px;
     display: flex;
@@ -14,7 +14,7 @@ const ControlPanel = styled.div`
     }
 `;
 
-const Title = styled.h2`
+export const Title = styled.h2`
     font-weight: 600;
     font-size: 24px;
     line-height: 110%;

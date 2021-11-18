@@ -1,9 +1,10 @@
 import React from 'react';
 import { /* Outlet, */ Navigate, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import ProfileMini from '../../sharedComponents/view/profileMini';
+import ProfileMini from '../../sharedComponents/view/components/profileMini';
 import { useAppSelector } from '../../store/hooks';
 import DoctorsView from './elements/doctorsView';
+import PatientNewAppointment from './elements/patient/patientNewAppointment';
 import PatientsView from './elements/patientView';
 
 const AppWrapper = styled.div`
@@ -56,6 +57,7 @@ function View(): JSX.Element {
                     <Route path="/doctor/*" element={<DoctorsView />} />
                     <Route path="/patient/*" element={<PatientsView />} />
                     <Route path="/admin/*" element={<div />} />
+                    <Route path="/newAppointment/*" element={<PatientNewAppointment />} />
                     <Route
                         path="/"
                         element={<Navigate to={`/view/${user.status.toLowerCase()}`} />}

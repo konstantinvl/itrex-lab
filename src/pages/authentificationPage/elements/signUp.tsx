@@ -13,6 +13,8 @@ import {
     FormWrapper,
     FormStyled,
 } from '../../../sharedComponents/authentification/authentificationForm';
+import { useAppDispatch } from '../../../services/store/hooks';
+import { signUpRequested } from '../../../services/store/user/userActions';
 
 const SignupSchema = Yup.object().shape({
     firstname: Yup.string()
@@ -34,11 +36,12 @@ const SignupSchema = Yup.object().shape({
         .matches(
             /([0-9]+)([A-z]+)|([A-z]+)([0-9]+)/gm,
             'Should contain of at least 1 letter and 1 number',
-        )
-        .required('Please enter the password'),
+        ),
+    // .required('Please enter the password'),
 });
 
 function SignUp(): JSX.Element {
+    const dispatch = useAppDispatch();
     return (
         <>
             <FormWrapper>
@@ -51,7 +54,16 @@ function SignUp(): JSX.Element {
                         comfirmpassword: '',
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={(/* values */) => {}}
+                    onSubmit={(values) => {
+                        dispatch(
+                            signUpRequested({
+                                userName: values.email,
+                                firstName: values.firstname,
+                                lastName: values.lastname,
+                                password: values.password,
+                            }),
+                        );
+                    }}
                 >
                     {({ errors, touched }) => (
                         <FormStyled>

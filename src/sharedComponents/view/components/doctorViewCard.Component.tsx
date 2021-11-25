@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { CANCELED, CONFIRMED, WAITING } from '../../constants';
-import { DoctorViewAppointment } from '../../interfaces';
+import { CANCELED, CONFIRMED, WAITING } from '../../../services/constants';
+import { Appointment } from '../../../services/interfaces';
 import Indicator from '../../roundIndicator';
 
 const Card = styled.div`
@@ -162,7 +162,7 @@ const DetailsDate = styled.span`
     line-height: 130%;
 `;
 
-function DoctorViewCard(props: { info: DoctorViewAppointment }): JSX.Element {
+function DoctorViewCard(props: { info: Appointment }): JSX.Element {
     const { info } = props;
 
     function indicatorColor(confirmation: string): string {
@@ -184,13 +184,13 @@ function DoctorViewCard(props: { info: DoctorViewAppointment }): JSX.Element {
 
     function appointmentCheck(confirmation: string): string {
         switch (confirmation) {
-            case 'CONFIRMED': {
+            case CONFIRMED: {
                 return 'Appointment is confirmed';
             }
-            case 'CANCELED': {
+            case CANCELED: {
                 return 'Appointment is canceled';
             }
-            case 'WAITING': {
+            case WAITING: {
                 return 'Waiting for confirmation... ';
             }
             default: {
@@ -202,15 +202,12 @@ function DoctorViewCard(props: { info: DoctorViewAppointment }): JSX.Element {
         <Card>
             <Overall>
                 <OverallInfoWrapper>
-                    <OverallPhoto
-                        src={`${process.env.PUBLIC_URL}/images/avatars/${info.photo}`}
-                        alt="Avatar"
-                    />
+                    <OverallPhoto src={info.patient?.photo} alt="Avatar" />
                     <OverallInfo>
-                        <OverallInfoName>{`${info.name} ${info.surname}`}</OverallInfoName>
+                        <OverallInfoName>{`${info.patient?.first_name} ${info.patient?.last_name}`}</OverallInfoName>
                         <OverallInfoAppointment>
-                            <Indicator color={indicatorColor(info.appointment)} />
-                            {appointmentCheck(info.appointment)}
+                            <Indicator color={indicatorColor(info.status)} />
+                            {appointmentCheck(info.status)}
                         </OverallInfoAppointment>
                     </OverallInfo>
                 </OverallInfoWrapper>
@@ -226,14 +223,14 @@ function DoctorViewCard(props: { info: DoctorViewAppointment }): JSX.Element {
                         backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clock-three.png)`,
                     }}
                 >
-                    {info.appointmentDate}
+                    {info.visit_date}
                 </DetailsDate>
                 <span
                     style={{
                         backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clipboard-blank.png)`,
                     }}
                 >
-                    {info.resolution}
+                    {info.note}
                 </span>
             </Details>
         </Card>

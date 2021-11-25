@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from 'yup';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -14,15 +15,17 @@ import {
     FormWrapper,
     FormStyled,
 } from '../../../sharedComponents/authentification/authentificationForm';
+import { useAppDispatch, useAppSelector } from '../../../services/store/hooks';
+import { loginRequested } from '../../../services/store/user/userActions';
 
 const SignupSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Please enter the Email'),
+    userName: Yup.string().email('Invalid email').required('Please enter the Email'),
     password: Yup.string()
         .min(6, 'Should be at least 6 characters long')
-        .matches(
-            /([0-9]+)([A-z]+)|([A-z]+)([0-9]+)/gm,
-            'Should contain of at least 1 letter and 1 number',
-        )
+        // .matches(
+        //     /([0-9]+)([A-z]+)|([A-z]+)([0-9]+)/gm,
+        //     'Should contain of at least 1 letter and 1 number',
+        // )
         .required('Please enter the password'),
 });
 
@@ -35,32 +38,35 @@ const LinkBlueStyled = styled(StyledLink)`
 `;
 
 function SignIn(): JSX.Element {
-    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     return (
         <>
             <FormWrapper>
                 <Formik
                     initialValues={{
-                        email: '',
+                        userName: '',
                         password: '',
                     }}
                     validationSchema={SignupSchema}
-                    onSubmit={
-                        (/* values */) => {
-                            navigate('/view');
-                        }
-                    }
+                    onSubmit={(values) => {
+                        dispatch(loginRequested(values));
+                        // navigate('/');
+                    }}
                 >
                     {({ errors, touched }) => (
                         <FormStyled>
                             <AuthentificationTitle title="Sign In" img="" link={null} />
 
                             <AuthentificationInput
+                                name="userName"
                                 type="email"
                                 icon="email.png"
                                 placeholder="Email"
                             />
-                            <InputError text={errors.email && touched.email ? errors.email : ''} />
+                            <InputError
+                                text={errors.userName && touched.userName ? errors.userName : ''}
+                            />
 
                             <AuthentificationPasswordInput
                                 icon="password.png"

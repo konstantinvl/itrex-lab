@@ -1,9 +1,8 @@
-// import React, { FC } from 'react';
 import styled from 'styled-components';
-import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
 import { rgba } from 'polished';
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(AsyncSelect)`
     margin-top: 16px;
 
     .select {

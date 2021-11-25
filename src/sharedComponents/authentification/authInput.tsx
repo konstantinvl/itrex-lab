@@ -50,14 +50,15 @@ function AuthentificationInput(props: {
     type: string;
     icon: string;
     placeholder: string;
+    name?: string;
 }): JSX.Element {
-    const { type, icon, placeholder } = props;
+    const { type, icon, placeholder, name } = props;
     return (
         <>
             <Label htmlFor={placeholder.split(' ').join('').toLowerCase()}>{type}</Label>
             <Input
                 id={placeholder.split(' ').join('').toLowerCase()}
-                name={placeholder.split(' ').join('').toLowerCase()}
+                name={name || placeholder.split(' ').join('').toLowerCase()}
                 type={type.toLowerCase()}
                 placeholder={placeholder}
                 style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/${icon})` }}
@@ -65,6 +66,9 @@ function AuthentificationInput(props: {
         </>
     );
 }
+AuthentificationInput.defaultProps = {
+    name: '',
+};
 
 export default AuthentificationInput;
 //

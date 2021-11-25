@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { PatientViewAppointment } from '../interfaces';
+import { PatientViewAppointment } from '../../interfaces';
 
 const Card = styled.div`
     height: 217px;

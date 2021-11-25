@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import Indicator from '../roundIndicator';
-import { setUser } from '../../store/user/userActions';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import Indicator from '../../roundIndicator';
+import { setUser } from '../../../store/user/userActions';
 
 const Profile = styled.div`
     display: flex;

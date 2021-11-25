@@ -2,12 +2,12 @@ import React from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { CANCELED, CONFIRMED, WAITING } from '../../../sharedComponents/constants';
 import { DoctorsData } from '../../../sharedComponents/interfaces';
-import ViewMainField from '../../../sharedComponents/view/viewMainField.Component';
-import MainField from '../../../sharedComponents/view/viewMainField.style';
+import ViewMainField from '../../../sharedComponents/view/components/viewMainField.Component';
+import MainField from '../../../sharedComponents/view/styles/viewMainField.style';
 
-import ViewNavigation from '../../../sharedComponents/view/viewNavigation.style';
-import ViewNavigationButton from '../../../sharedComponents/view/viewNavigationButton.style';
-import Ul from '../../../sharedComponents/view/viewNavigationUlLi.style';
+import ViewNavigation from '../../../sharedComponents/view/styles/viewNavigation.style';
+import ViewNavigationButton from '../../../sharedComponents/view/styles/viewNavigationButton.style';
+import Ul from '../../../sharedComponents/view/styles/viewNavigationUlLi.style';
 
 const DOCTORS_PAGES = ['Patients', 'Resolutions'];
 

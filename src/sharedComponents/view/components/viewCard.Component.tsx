@@ -1,5 +1,5 @@
 import React from 'react';
-import { DoctorViewAppointment, PatientViewAppointment } from '../interfaces';
+import { DoctorViewAppointment, PatientViewAppointment } from '../../interfaces';
 import DoctorViewCard from './doctorViewCard.Component';
 import PatientViewCard from './patientViewCard.Component';
 

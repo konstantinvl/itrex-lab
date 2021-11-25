@@ -25,7 +25,7 @@ function App(): JSX.Element {
                 <Routes>
                     <Route path="/auth/*" element={<AuthentificationPage />} />
                     <Route path="/view/*" element={<View />} />
-                    <Route path="/" element={<Navigate to="/auth" />} />
+                    <Route path="/" element={<Navigate to="/view/newAppointment" />} />
                 </Routes>
             </BrowserRouter>
         </AppPage>

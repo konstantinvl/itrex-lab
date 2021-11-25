@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+
+import { useAppSelector } from '../../../services/store/hooks';
 import Indicator from '../../roundIndicator';
-import { setUser } from '../../../store/user/userActions';
 
 const Profile = styled.div`
     display: flex;
@@ -62,39 +61,17 @@ const Photo = styled.img`
     z-index: 1;
 `;
 
-const DOCTOR = {
-    name: 'Miranda',
-    surname: 'Nelson',
-    status: 'Doctor',
-    photo: `MIR-NEL-avatar.png`,
-    online: true,
-};
-const PATIENT = {
-    name: 'Miranda',
-    surname: 'Nelson',
-    status: 'Patient',
-    photo: `MIR-NEL-avatar.png`,
-    online: true,
-};
-
 function ProfileMini(): JSX.Element {
-    const { user } = useAppSelector((state) => state.user);
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+    const { user } = useAppSelector((state) => state);
     return (
-        <Profile
-            onClick={() => {
-                dispatch(setUser(user.status === 'Doctor' ? PATIENT : DOCTOR));
-                navigate('/view');
-            }}
-        >
+        <Profile>
             <InfoWrapper>
-                <Name>{`${user.name} ${user.surname}`}</Name>
-                <Status>{user.status}</Status>
+                <Name>{`${user.first_name} ${user.last_name}`}</Name>
+                <Status>{user.role_name}</Status>
             </InfoWrapper>
             <PhotoWrapper>
-                <Photo src={`${process.env.PUBLIC_URL}/images/avatars/${user.photo}`} />
-                <Indicator color={user.online ? '#34C197' : '#FF2567'} />
+                <Photo src={user.photo} />
+                <Indicator color="#34C197" />
             </PhotoWrapper>
         </Profile>
     );

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { useAppSelector } from '../../../store/hooks';
-import { DataSet } from '../../interfaces';
+import { useAppSelector } from '../../../services/store/hooks';
+import { Appointment } from '../../../services/interfaces';
 import ViewCard from './viewCard.Component';
 import ViewMainFieldControl from './viewMainFieldControls.Component';
+import CreateAppointmentButton from './createAppointmentButton';
 
 const ViewMainFieldInfo = styled.div`
     padding: 0px 32px 0px 28px;
@@ -52,16 +53,17 @@ const ViewMainFieldInfo = styled.div`
     }
 `;
 
-function ViewMainField(props: { data: DataSet }): JSX.Element {
-    const { user } = useAppSelector((state) => state.user);
-    const { data } = props;
-    const { title, dataSet } = data;
+function ViewMainField(props: { data: Appointment[]; title: string }): JSX.Element {
+    const { user } = useAppSelector((state) => state);
+    const { title, data } = props;
     return (
         <>
-            <ViewMainFieldControl title={`My ${title}`} />
+            <ViewMainFieldControl title={`My ${title}`}>
+                <CreateAppointmentButton />
+            </ViewMainFieldControl>
             <ViewMainFieldInfo>
-                {dataSet?.map((info) => {
-                    return <ViewCard info={info} status={user.status} key={info.name} />;
+                {data?.map((info) => {
+                    return <ViewCard info={info} status={user.role_name} key={info.id} />;
                 })}
             </ViewMainFieldInfo>
         </>

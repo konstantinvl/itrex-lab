@@ -109,7 +109,7 @@ export interface Patient {
     id: string;
     photo: string;
 }
-
+// jfdhgkjsdhfgh
 export interface SpecializationData {
     id: string;
     specialization_name: string;

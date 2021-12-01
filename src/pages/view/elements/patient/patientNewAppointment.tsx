@@ -1,7 +1,9 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
+import { useNavigate } from 'react-router-dom';
 import MainField from '../../../../sharedComponents/view/styles/viewMainField.style';
 import {
     ControlPanel,
@@ -20,8 +22,15 @@ import RadioWrapper from '../styles/appointmentRadioWrapper';
 import RadioLabel from '../styles/invisRadioLabel';
 import SelectLabel from '../styles/appointmentSelectLabel';
 import AppointmentInput from '../styles/appointmentInput';
-import BlueButton from '../../../../sharedComponents/blueSubmitButton';
+import BlueButton from '../../../modules/components/styles/blueButton';
 import InlineNav from '../../../../sharedComponents/inlineNavigation';
+import {
+    getDoctorsBySpec,
+    getFreeTime,
+    getSpecializations,
+} from '../../../../services/axios/requests';
+import { useAppDispatch, useAppSelector } from '../../../../services/store/hooks';
+import { appointmentSetRequested } from '../../../../services/store/appointment/appointmentActions';
 
 const AppointmentSchema = Yup.object().shape({
     occupation: Yup.string().required(),
@@ -32,37 +41,59 @@ const AppointmentSchema = Yup.object().shape({
     time: Yup.string().required(),
 });
 
-const DoctorsOcupations = [
-    { value: 'Therapist', label: 'Therapist' },
-    { value: 'Surgeon', label: 'Surgeon' },
-    { value: 'Therapist', label: 'Therapist' },
-    { value: 'Surgeon', label: 'Surgeon' },
-    { value: 'Therapist', label: 'Therapist' },
-    { value: 'Surgeon', label: 'Surgeon' },
-    { value: 'Therapist', label: 'Therapist' },
-    { value: 'Surgeon', label: 'Surgeon' },
-];
-const DoctorsName = [
-    { value: 'Lil Pump', label: 'Lil Pump' },
-    { value: 'Lil John', label: 'Lil John' },
-    { value: 'Lil Pump', label: 'Lil Pump' },
-    { value: 'Lil John', label: 'Lil John' },
-    { value: 'Lil Pump', label: 'Lil Pump' },
-    { value: 'Lil John', label: 'Lil John' },
-];
-const FreeTime = [
-    { time: '10:00 am', free: true },
-    { time: '11:00 am', free: true },
-    { time: '12:00 am', free: true },
-    { time: '1:00 pm', free: true },
-    { time: '2:00 am', free: false },
-    { time: '3:00 am', free: true },
-    { time: '4:00 am', free: false },
-    { time: '5:00 am', free: true },
-    { time: '6:00 am', free: true },
-];
-
 function PatientNewAppointment(): JSX.Element {
+    const { user } = useAppSelector((state) => state);
+
+    const navigate = useNavigate();
+
+    const dispatch = useAppDispatch();
+
+    const [doctorSpec, setDoctorSpec] = useState<string>('');
+    const [doctorsBySpec, setDoctorsBySpec] = useState<
+        {
+            value: string;
+            label: string;
+        }[]
+    >([]);
+    const [choosenDoctor, setChoosenDoctor] = useState<string>('');
+    const [appDate, setAppDate] = useState<string>('');
+    const [freeTimes, setFreeTimes] = useState<string[]>([]);
+
+    async function loadSpecializations() {
+        const specializations = await getSpecializations();
+        return specializations.map((spec) => {
+            return { value: spec.id, label: spec.specialization_name.toLocaleUpperCase('en-En') };
+        });
+    }
+
+    async function loadDoctors() {
+        if (doctorSpec) {
+            const doctors = await getDoctorsBySpec(doctorSpec);
+            setDoctorsBySpec(
+                doctors.map((doctor) => {
+                    return { value: doctor.id, label: `${doctor.first_name} ${doctor.last_name}` };
+                }),
+            );
+        }
+    }
+
+    async function loadFreeTime() {
+        if (appDate) {
+            const freeTime = await getFreeTime(appDate, choosenDoctor);
+            setFreeTimes(freeTime);
+        }
+    }
+
+    useEffect(() => {
+        loadDoctors();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [doctorSpec]);
+
+    useEffect(() => {
+        loadFreeTime();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [appDate]);
+
     return (
         <>
             <ViewNavigation>
@@ -102,7 +133,20 @@ function PatientNewAppointment(): JSX.Element {
                             time: '',
                         }}
                         validationSchema={AppointmentSchema}
-                        onSubmit={() => {}}
+                        onSubmit={(values) => {
+                            dispatch(
+                                appointmentSetRequested(
+                                    {
+                                        date: values.date.toISOString(),
+                                        reason: values.reason,
+                                        note: values.note,
+                                        doctorID: values.name,
+                                    },
+                                    user.role_name,
+                                ),
+                            );
+                            navigate('/view/');
+                        }}
                     >
                         {({
                             values,
@@ -130,9 +174,11 @@ function PatientNewAppointment(): JSX.Element {
                                             const { value } = ev as { value: string };
                                             setTouched({ occupation: true, ...touched });
                                             setFieldValue('occupation', value);
+                                            setDoctorSpec(value);
                                         }}
                                         name="occupation"
-                                        options={DoctorsOcupations}
+                                        defaultOptions
+                                        loadOptions={() => loadSpecializations()}
                                         classNamePrefix="select"
                                         placeholder="Occupation"
                                     />
@@ -141,10 +187,11 @@ function PatientNewAppointment(): JSX.Element {
                                         onChange={(ev) => {
                                             const { value } = ev as { value: string };
                                             setTouched({ name: true, ...touched });
-                                            return setFieldValue('name', value);
+                                            setFieldValue('name', value);
+                                            setChoosenDoctor(value);
                                         }}
                                         name="name"
-                                        options={DoctorsName}
+                                        defaultOptions={doctorsBySpec}
                                         classNamePrefix="select"
                                         placeholder="Doctor`s name"
                                         isDisabled={!!errors.occupation || !touched.occupation}
@@ -176,6 +223,7 @@ function PatientNewAppointment(): JSX.Element {
                                         onChange={(ev: Date) => {
                                             setFieldValue('date', ev);
                                             setTouched({ date: true, ...touched });
+                                            setAppDate(ev.toISOString());
                                         }}
                                         next2Label={null}
                                         prev2Label={null}
@@ -206,26 +254,37 @@ function PatientNewAppointment(): JSX.Element {
                                         role="group"
                                         disabled={!touched.date || !!errors.date}
                                     >
-                                        {FreeTime.map((time) => {
-                                            return (
-                                                <>
-                                                    <InvisField
-                                                        type="radio"
-                                                        id={time.time.split(' ').join('')}
-                                                        name="time"
-                                                        value={time.time}
-                                                        disabled={!time.free}
-                                                        onChange={handleChange}
-                                                    />
-                                                    <RadioLabel
-                                                        htmlFor={time.time.split(' ').join('')}
-                                                        tabIndex={0}
-                                                    >
-                                                        {time.time}
-                                                    </RadioLabel>
-                                                </>
-                                            );
-                                        })}
+                                        {freeTimes.length
+                                            ? freeTimes.map((time) => {
+                                                  return (
+                                                      <>
+                                                          <InvisField
+                                                              type="radio"
+                                                              id={time}
+                                                              name="time"
+                                                              value={time}
+                                                              // disabled={!time.free}
+                                                              onChange={handleChange}
+                                                              key={time}
+                                                          />
+                                                          <RadioLabel
+                                                              htmlFor={time}
+                                                              tabIndex={0}
+                                                              key={`${time}label`}
+                                                          >
+                                                              {new Date(time).toLocaleTimeString(
+                                                                  'en-EN',
+                                                                  {
+                                                                      hour12: true,
+                                                                      hour: '2-digit',
+                                                                      minute: '2-digit',
+                                                                  },
+                                                              )}
+                                                          </RadioLabel>
+                                                      </>
+                                                  );
+                                              })
+                                            : 'No free time left. Please choise another date'}
                                     </RadioWrapper>
                                     <BlueButton
                                         type="submit"

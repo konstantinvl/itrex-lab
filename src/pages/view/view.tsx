@@ -1,8 +1,8 @@
 import React from 'react';
-import { /* Outlet, */ Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import ProfileMini from '../../sharedComponents/view/components/profileMini';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../services/store/hooks';
 import DoctorsView from './elements/doctorsView';
 import PatientNewAppointment from './elements/patient/patientNewAppointment';
 import PatientsView from './elements/patientView';
@@ -44,8 +44,7 @@ const Main = styled.main`
 `;
 
 function View(): JSX.Element {
-    const { user } = useAppSelector((state) => state.user);
-
+    const { user } = useAppSelector((state) => state);
     return (
         <AppWrapper>
             <Header>
@@ -60,7 +59,7 @@ function View(): JSX.Element {
                     <Route path="/newAppointment/*" element={<PatientNewAppointment />} />
                     <Route
                         path="/"
-                        element={<Navigate to={`/view/${user.status.toLowerCase()}`} />}
+                        element={<Navigate to={`/view/${user.role_name.toLowerCase()}`} />}
                     />
                 </Routes>
             </Main>

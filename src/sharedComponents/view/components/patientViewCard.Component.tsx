@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { PatientViewAppointment } from '../../interfaces';
+import { Appointment } from '../../../services/interfaces';
 
 const Card = styled.div`
     height: 217px;
@@ -161,19 +161,18 @@ const DetailsDate = styled.span`
     line-height: 130%;
 `;
 
-function PatientViewCard(props: { info: PatientViewAppointment }): JSX.Element {
+function PatientViewCard(props: { info: Appointment }): JSX.Element {
     const { info } = props;
     return (
         <Card>
             <Overall>
                 <OverallInfoWrapper>
-                    <OverallPhoto
-                        src={`${process.env.PUBLIC_URL}/images/avatars/${info.photo}`}
-                        alt="Avatar"
-                    />
+                    <OverallPhoto src={info.doctor?.photo} alt="Avatar" />
                     <OverallInfo>
-                        <OverallInfoName>{`${info.name} ${info.surname}`}</OverallInfoName>
-                        <OverallInfoAppointment>{info.speciality}</OverallInfoAppointment>
+                        <OverallInfoName>{`${info.doctor?.first_name} ${info.doctor?.last_name}`}</OverallInfoName>
+                        <OverallInfoAppointment>
+                            {info.doctor?.specialization_name}
+                        </OverallInfoAppointment>
                     </OverallInfo>
                 </OverallInfoWrapper>
                 <OverallMenu
@@ -188,14 +187,14 @@ function PatientViewCard(props: { info: PatientViewAppointment }): JSX.Element {
                         backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clock-three.png)`,
                     }}
                 >
-                    {info.appointmentDate}
+                    {info.visit_date}
                 </DetailsDate>
                 <span
                     style={{
                         backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/reason.png)`,
                     }}
                 >
-                    {info.simptoms}
+                    {info.reason}
                 </span>
             </Details>
         </Card>

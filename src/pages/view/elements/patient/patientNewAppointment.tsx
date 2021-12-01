@@ -22,7 +22,7 @@ import RadioWrapper from '../styles/appointmentRadioWrapper';
 import RadioLabel from '../styles/invisRadioLabel';
 import SelectLabel from '../styles/appointmentSelectLabel';
 import AppointmentInput from '../styles/appointmentInput';
-import BlueButton from '../../../../sharedComponents/blueSubmitButton';
+import BlueButton from '../../../modules/components/styles/blueButton';
 import InlineNav from '../../../../sharedComponents/inlineNavigation';
 import {
     getDoctorsBySpec,

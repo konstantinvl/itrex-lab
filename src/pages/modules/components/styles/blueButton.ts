@@ -4,7 +4,6 @@ const BlueButton = styled.button`
     cursor: pointer;
     border: none;
     box-shadow: none;
-    margin-top: 40px;
     width: fit-content;
     height: 56px;
     padding: 16px 24px;
@@ -31,7 +30,6 @@ const BlueButton = styled.button`
         width: unset;
         margin-left: 10%;
         box-shadow: none;
-        margin-top: 32px;
         height: 48px;
         padding: 12px 16px;
         border-radius: 8px;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledLink = styled(Link)`
+const StyledLinkUnderlined = styled(Link)`
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
@@ -13,4 +13,4 @@ const StyledLink = styled(Link)`
     cursor: pointer;
 `;
 
-export default StyledLink;
+export default StyledLinkUnderlined;

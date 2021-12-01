@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Error = styled.span`
+const StyledErrorText = styled.span`
     margin-top: 8px;
     height: 16px;
     font-size: 13px;
@@ -31,9 +30,4 @@ const Error = styled.span`
     }
 `;
 
-function InputError(props: { text: string }): JSX.Element {
-    const { text } = props;
-    return <Error style={text !== '' ? { visibility: 'visible' } : {}}>{text}</Error>;
-}
-
-export default InputError;
+export default StyledErrorText;

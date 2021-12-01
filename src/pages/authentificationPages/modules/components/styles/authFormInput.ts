@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-const Input = styled(Field)`
+const StyledInput = styled(Field)`
     margin-top: 40px;
     color: #a1abc9;
     width: 368px;
@@ -37,38 +36,4 @@ const Input = styled(Field)`
     }
 `;
 
-const Label = styled.label`
-    margin: 0;
-
-    visibility: collapse;
-    height: 0px;
-    width: 0px;
-    position: relative;
-`;
-
-function AuthentificationInput(props: {
-    type: string;
-    icon: string;
-    placeholder: string;
-    name?: string;
-}): JSX.Element {
-    const { type, icon, placeholder, name } = props;
-    return (
-        <>
-            <Label htmlFor={placeholder.split(' ').join('').toLowerCase()}>{type}</Label>
-            <Input
-                id={placeholder.split(' ').join('').toLowerCase()}
-                name={name || placeholder.split(' ').join('').toLowerCase()}
-                type={type.toLowerCase()}
-                placeholder={placeholder}
-                style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/${icon})` }}
-            />
-        </>
-    );
-}
-AuthentificationInput.defaultProps = {
-    name: '',
-};
-
-export default AuthentificationInput;
-//
+export default StyledInput;

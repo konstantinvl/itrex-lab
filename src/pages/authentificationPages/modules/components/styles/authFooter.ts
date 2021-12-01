@@ -1,8 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
-import StyledLink from '../linkBlueUnderlined';
 
-const AuthFoot = styled.div`
+const StyledAuthFooter = styled.div`
     height: 24px;
     margin-bottom: 80px;
     display: flex;
@@ -28,18 +26,4 @@ const AuthFoot = styled.div`
     }
 `;
 
-function AuthentificationFooter(props: {
-    text: string;
-    linkText: string;
-    linkNavigation: string;
-}): JSX.Element {
-    const { text, linkText, linkNavigation } = props;
-    return (
-        <AuthFoot>
-            {text}
-            <StyledLink to={linkNavigation}>{linkText}</StyledLink>
-        </AuthFoot>
-    );
-}
-
-export default AuthentificationFooter;
+export default StyledAuthFooter;

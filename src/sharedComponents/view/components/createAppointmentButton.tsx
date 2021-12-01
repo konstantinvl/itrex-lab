@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import BlueButton from '../../blueSubmitButton';
+import BlueButton from '../../../pages/modules/components/styles/blueButton';
 
 function CreateAppointmentButton(): JSX.Element {
     const navigate = useNavigate();

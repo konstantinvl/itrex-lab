@@ -12,7 +12,6 @@ export interface UserState {
 export interface AppointmentsState {
     appointments: Appointment[];
     total: number;
-    errors: SerializedError[];
 }
 export interface UserInterface {
     id: string;

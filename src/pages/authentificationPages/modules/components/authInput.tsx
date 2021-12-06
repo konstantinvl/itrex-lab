@@ -12,7 +12,7 @@ function AuthentificationInput(props: {
     return (
         <>
             <StyledInvisibleLabel htmlFor={placeholder.split(' ').join('').toLowerCase()}>
-                {type}
+                {placeholder.split(' ').join('').toLowerCase()}
             </StyledInvisibleLabel>
             <StyledInput
                 id={placeholder.split(' ').join('').toLowerCase()}

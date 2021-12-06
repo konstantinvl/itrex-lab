@@ -19,7 +19,7 @@ function SignUpFormik(): JSX.Element {
                 lastname: '',
                 email: '',
                 password: '',
-                comfirmpassword: '',
+                confirmpassword: '',
             }}
             validationSchema={SignupSchema}
             onSubmit={(values) => {
@@ -57,8 +57,8 @@ function SignUpFormik(): JSX.Element {
                     />
                     <InputError
                         text={
-                            errors.comfirmpassword && touched.comfirmpassword
-                                ? errors.comfirmpassword
+                            errors.confirmpassword && touched.confirmpassword
+                                ? errors.confirmpassword
                                 : ''
                         }
                     />

@@ -5,7 +5,6 @@ import { AppointmentsData, AppointmentsState } from '../../interfaces';
 const initialState: AppointmentsState = {
     appointments: [],
     total: 0,
-    errors: [],
 };
 
 export const appointmentsSlice = createSlice({

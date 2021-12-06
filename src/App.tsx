@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AuthentificationPage from './routes/authentificationRoute';
-import View from './pages/view/view';
+import View from './routes/viewRoute';
 import { useAppSelector } from './services/store/hooks';
 
 const AppPage = styled.div`

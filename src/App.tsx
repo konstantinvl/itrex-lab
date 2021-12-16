@@ -1,8 +1,10 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import AuthentificationPage from './pages/authentificationPage/authentificationPage';
-import View from './pages/view/view';
+import AuthentificationPage from './routes/authentificationRoute';
+import View from './routes/viewRoute';
+import { useAppSelector } from './services/store/hooks';
 
 const AppPage = styled.div`
     width: 100%;
@@ -19,15 +21,22 @@ const AppPage = styled.div`
 `;
 
 function App(): JSX.Element {
+    const { user } = useAppSelector((state) => state);
+
+    const navigation = useNavigate();
+
+    useEffect(() => {
+        navigation('/');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user]);
+
     return (
         <AppPage>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/auth/*" element={<AuthentificationPage />} />
-                    <Route path="/view/*" element={<View />} />
-                    <Route path="/" element={<Navigate to="/view/newAppointment" />} />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route path="/auth/*" element={<AuthentificationPage />} />
+                <Route path="/view/*" element={<View />} />
+                <Route path="/" element={<Navigate to={user.id ? '/view/' : '/auth/'} />} />
+            </Routes>
         </AppPage>
     );
 }

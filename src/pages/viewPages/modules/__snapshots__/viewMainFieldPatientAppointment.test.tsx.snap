@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doctors view appointments should render appointments: 
+            Array [
+                "testappointment1 testappointment1",
+                "name2 name2"
+            ]
+         1`] = `
+Array [
+  "testappointment1 testappointment1",
+  "name2 name2",
+]
+`;

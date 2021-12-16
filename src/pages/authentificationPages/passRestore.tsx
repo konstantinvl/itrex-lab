@@ -1,5 +1,4 @@
 import React from 'react';
-
 import StyleFormWrapper from './modules/components/styles/authFormWrapper';
 import PassRestoreFormik from './modules/passRestoreFormik';
 

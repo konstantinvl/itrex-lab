@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import ProfileMini from '../pages/modules/components/profileMini';
+import ProfileMini from '../components/profileMini';
+import PatientNewAppointment from '../pages/newAppointmentPage/newAppointmentPage';
 import { useAppSelector } from '../services/store/hooks';
 import DoctorsView from './doctorsViewRoute';
-import PatientNewAppointment from '../pages/newAppointmentPage/newAppointmentPage';
 import PatientsView from './patientViewRoute';
 
 const AppWrapper = styled.div`

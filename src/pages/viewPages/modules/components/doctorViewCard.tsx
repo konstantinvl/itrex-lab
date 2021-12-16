@@ -1,12 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import ResolutionCreatePopup from 'components/resolutionCreatePopup';
+import React, { useState } from 'react';
 import { rgba } from 'polished';
-import { CANCELED, CONFIRMED, WAITING } from '../../../../services/constants';
+
+import { appointmentCheck, indicatorColor } from 'services/utilities';
+import styled from 'styled-components';
+import ResolutionEditPopup from 'components/resolutionEditPopup';
+import Indicator from '../../../../components/roundIndicator';
 import { Appointment } from '../../../../services/interfaces';
-import Indicator from '../../../../sharedComponents/roundIndicator';
+import CardMenuButton from './cardMenuButton';
 
 const Card = styled.div`
-    height: 264px;
     width: 406px;
     display: flex;
     flex-direction: column;
@@ -28,7 +31,6 @@ const Card = styled.div`
         margin-top: 16px;
         margin-left: 0;
         height: 305px;
-        //max-width: 100%;
         padding: 24px 0px 24px;
     }
 `;
@@ -42,8 +44,6 @@ const Overall = styled.div`
     border-bottom: solid 1px ${rgba('#dce0ec', 0.5)};
     padding-bottom: 24px;
     @media screen and (min-width: 0px) and (max-width: 561px) {
-        /* max-height: 72px; */
-        //   padding-bottom: 5px;
         padding-bottom: 0;
     }
 `;
@@ -54,6 +54,7 @@ const Details = styled.div`
     flex-direction: column;
     padding: 0px 32px;
     & span {
+        min-height: 24px;
         padding-left: 40px;
         font-size: 15px;
         line-height: 140%;
@@ -145,9 +146,11 @@ const OverallInfoAppointment = styled.div`
     }
 `;
 const OverallMenu = styled.div`
+    position: relative;
     flex: 1;
-    background-position: center;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 80px;
     @media screen and (min-width: 0px) and (max-width: 561px) {
         min-width: 54px;
@@ -165,75 +168,76 @@ const DetailsDate = styled.span`
 function DoctorViewCard(props: { info: Appointment }): JSX.Element {
     const { info } = props;
 
-    function indicatorColor(confirmation: string): string {
-        switch (confirmation) {
-            case CONFIRMED: {
-                return '#34C197';
-            }
-            case CANCELED: {
-                return '#FF2567';
-            }
-            case WAITING: {
-                return '#7297FF';
-            }
-            default: {
-                return '#FF2567';
-            }
-        }
-    }
+    const [showCreateResolution, setShowCreateResolution] = useState<boolean>(false);
+    const [showEditResolution, setShowEditResolution] = useState<boolean>(false);
+    const menuButtons: {
+        text: string;
+        closeFunc: React.Dispatch<React.SetStateAction<boolean>>;
+    }[] = [
+        { text: 'Create a resoluton', closeFunc: setShowCreateResolution },
+        { text: 'Edit a resoluton', closeFunc: setShowEditResolution },
+        { text: 'Delete', closeFunc: setShowCreateResolution },
+    ];
 
-    function appointmentCheck(confirmation: string): string {
-        switch (confirmation) {
-            case CONFIRMED: {
-                return 'Appointment is confirmed';
-            }
-            case CANCELED: {
-                return 'Appointment is canceled';
-            }
-            case WAITING: {
-                return 'Waiting for confirmation... ';
-            }
-            default: {
-                return 'Appointment not set';
-            }
-        }
-    }
     return (
-        <Card>
-            <Overall>
-                <OverallInfoWrapper>
-                    <OverallPhoto src={info.patient?.photo} alt="Avatar" />
-                    <OverallInfo>
-                        <OverallInfoName data-testid="name">{`${info.patient?.first_name} ${info.patient?.last_name}`}</OverallInfoName>
-                        <OverallInfoAppointment>
-                            <Indicator color={indicatorColor(info.status)} />
-                            {appointmentCheck(info.status)}
-                        </OverallInfoAppointment>
-                    </OverallInfo>
-                </OverallInfoWrapper>
-                <OverallMenu
-                    style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/menu-vertical.png)`,
-                    }}
+        <>
+            <Card>
+                <Overall>
+                    <OverallInfoWrapper>
+                        <OverallPhoto src={info.patient?.photo} alt="Avatar" />
+                        <OverallInfo>
+                            <OverallInfoName data-testid="name">{`${info.patient?.first_name} ${info.patient?.last_name}`}</OverallInfoName>
+                            <OverallInfoAppointment>
+                                <Indicator color={indicatorColor(info.status)} />
+                                {appointmentCheck(info.status)}
+                            </OverallInfoAppointment>
+                        </OverallInfo>
+                    </OverallInfoWrapper>
+                    <OverallMenu>
+                        <CardMenuButton menuButtons={menuButtons} />
+                    </OverallMenu>
+                </Overall>
+                <Details>
+                    <DetailsDate
+                        style={{
+                            backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clock-three.png)`,
+                        }}
+                    >
+                        {new Date(info.visit_date).toLocaleDateString('En-en', {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            hour12: true,
+                        })}
+                    </DetailsDate>
+                    <span
+                        style={{
+                            backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clipboard-blank.png)`,
+                        }}
+                    >
+                        {info.note}
+                    </span>
+                </Details>
+            </Card>
+            {showCreateResolution && (
+                <ResolutionCreatePopup
+                    firstName={info.patient?.first_name}
+                    lastName={info.patient?.last_name}
+                    appointmentID={info.id}
+                    closeFunc={setShowCreateResolution}
                 />
-            </Overall>
-            <Details>
-                <DetailsDate
-                    style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clock-three.png)`,
-                    }}
-                >
-                    {info.visit_date}
-                </DetailsDate>
-                <span
-                    style={{
-                        backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/clipboard-blank.png)`,
-                    }}
-                >
-                    {info.note}
-                </span>
-            </Details>
-        </Card>
+            )}
+            {showEditResolution && (
+                <ResolutionEditPopup
+                    firstName={info.patient?.first_name}
+                    lastName={info.patient?.last_name}
+                    appointmentID={info.id}
+                    closeFunc={setShowEditResolution}
+                />
+            )}
+        </>
     );
 }
 export default DoctorViewCard;

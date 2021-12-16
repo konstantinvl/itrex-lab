@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import StyledLinkUnderlined from '../../../../modules/components/styles/linkUnderlined';
+import StyledLinkUnderlined from '../../../../../components/styles/linkUnderlined';
 
 const StyledLinkUnderlinedAuth = styled(StyledLinkUnderlined)`
     margin-top: 32px;

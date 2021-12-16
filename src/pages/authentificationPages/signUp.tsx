@@ -1,5 +1,4 @@
 import React from 'react';
-
 import AuthentificationFooter from './modules/components/authFooter';
 import StyledFormWrapper from './modules/components/styles/authFormWrapper';
 import SignUpFormik from './modules/signUpFormik';

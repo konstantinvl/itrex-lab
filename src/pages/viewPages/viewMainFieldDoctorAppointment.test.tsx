@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'test-utils';
-
 import ViewMainFieldDoctorAppointment from './viewMainFieldDoctorAppointment';
 
 describe('Doctors view appointments', () => {
@@ -65,6 +64,6 @@ describe('Doctors view appointments', () => {
             initialState: { appointments },
         });
         const test = getAllByTestId('no-appointments');
-        expect(test.length);
+        expect(test.length === 1);
     });
 });

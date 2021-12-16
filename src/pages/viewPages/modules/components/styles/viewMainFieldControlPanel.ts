@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledControlPanel = styled.div`
     padding: 0px 32px 0px 48px;
-    height: 32px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

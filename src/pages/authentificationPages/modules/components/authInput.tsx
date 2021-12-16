@@ -1,6 +1,6 @@
 import React from 'react';
-import StyledInvisibleLabel from './styles/invisibleLabel';
 import StyledInput from './styles/authFormInput';
+import StyledInvisibleLabel from './styles/invisibleLabel';
 
 function AuthentificationInput(props: {
     type: string;
@@ -19,7 +19,9 @@ function AuthentificationInput(props: {
                 name={name || placeholder.split(' ').join('').toLowerCase()}
                 type={type.toLowerCase()}
                 placeholder={placeholder}
-                style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/${icon})` }}
+                style={{
+                    backgroundImage: `url(${process.env.PUBLIC_URL}/images/icons/${icon})`,
+                }}
             />
         </>
     );

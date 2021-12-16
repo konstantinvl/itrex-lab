@@ -1,7 +1,7 @@
-import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
-import { render } from 'test-utils';
+import React from 'react';
 import { DoctorBySpec, SpecializationData } from 'services/interfaces';
+import { render } from 'test-utils';
 import AppointmentFormik from './newAppointmentFormik';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

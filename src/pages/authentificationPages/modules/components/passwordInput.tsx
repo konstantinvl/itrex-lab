@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import AuthentificationInput from './authInput';
 import StyledPasswordInputWrapper from './styles/authPasswordInputWrapper';
 import StyledShowImg from './styles/authPasswordShowImg';

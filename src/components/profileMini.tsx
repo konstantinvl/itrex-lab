@@ -1,7 +1,6 @@
 import React from 'react';
-
-import { useAppSelector } from '../../../services/store/hooks';
-import Indicator from '../../../sharedComponents/roundIndicator';
+import { useAppSelector } from '../services/store/hooks';
+import Indicator from './roundIndicator';
 import StyledMiniProfile from './styles/miniProfile';
 import StyledInfoWrapper from './styles/miniProfileInfoWrapper';
 import StyledName from './styles/miniProfileName';

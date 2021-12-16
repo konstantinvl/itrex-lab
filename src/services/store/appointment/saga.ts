@@ -5,28 +5,20 @@ import {
     AppointmentsData,
     AppointmentSetInterface,
     NewAppointmentInterface,
+    NotificationState,
 } from '../../interfaces';
+import { notificationSendError } from '../notification/notificationActions';
+import { resolutionsGetRequested } from '../resolutions/resolutionActions';
 import { appointmentGetRequested, appointmentsRequestFullfiled } from './appointmentActions';
 
-export function* appointmentsGetRequest(action: PayloadAction<string>): Generator<
-    | CallEffect<AppointmentsData>
-    | PutEffect<{
-          payload: AppointmentsData;
-          type: string;
-      }>
-    | PutEffect<{
-          type: string;
-          message: unknown;
-      }>,
-    void,
-    AppointmentsData
-> {
+export function* appointmentsGetRequest(action: PayloadAction<string>) {
     try {
         const appointments: AppointmentsData = yield call(getAppointments, action.payload);
 
         yield put(appointmentsRequestFullfiled(appointments));
+        yield put(resolutionsGetRequested(action.payload));
     } catch (e) {
-        yield put({ type: 'USER_FETCH_FAILED', message: e });
+        yield put(notificationSendError((e as Error).message));
     }
 }
 
@@ -39,8 +31,8 @@ export function* appointmentsSetRequest(
           type: string;
       }>
     | PutEffect<{
+          payload: NotificationState;
           type: string;
-          message: unknown;
       }>,
     void,
     NewAppointmentInterface
@@ -55,6 +47,6 @@ export function* appointmentsSetRequest(
             yield put(appointmentGetRequested(action.payload.role));
         }
     } catch (e) {
-        yield put({ type: 'USER_FETCH_FAILED', message: e });
+        yield put(notificationSendError((e as Error).message));
     }
 }

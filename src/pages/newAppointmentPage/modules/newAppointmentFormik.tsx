@@ -1,12 +1,12 @@
+import StyledSelect from 'components/inputSelect';
+import BlueButton from 'components/styles/blueButton';
 import { Formik } from 'formik';
-import BlueButton from 'pages/modules/components/styles/blueButton';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { getDoctorsBySpec, getFreeTime, getSpecializations } from 'services/axios/requests';
 import { DoctorBySpec, SpecializationData } from 'services/interfaces';
 import { appointmentSetRequested } from 'services/store/appointment/appointmentActions';
 import { useAppDispatch, useAppSelector } from 'services/store/hooks';
-import StyledSelect from 'sharedComponents/inputSelect';
 import StyledCalendar from './components/styles/appointmentCalendar';
 import StyledForm from './components/styles/appointmentForm';
 import FormPartTitle from './components/styles/appointmentFormPartTitle';
@@ -14,7 +14,6 @@ import FormPartWrapper from './components/styles/appointmentFormPartWrapper';
 import AppointmentInput from './components/styles/appointmentInput';
 import RadioWrapper from './components/styles/appointmentRadioWrapper';
 import SelectLabel from './components/styles/appointmentSelectLabel';
-
 import InvisField from './components/styles/invisField';
 import RadioLabel from './components/styles/invisRadioLabel';
 import AppointmentSchema from './validationSchema';

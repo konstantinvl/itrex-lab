@@ -1,11 +1,10 @@
 {
-  
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "prettier.configPath": "D:\\itrex\\LAB\\react1\\itrex-lab\\package.json",
-    "prettier.printWidth": 100,
-    "prettier.requireConfig": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.configPath": "D:\\itrex\\LAB\\react1\\itrex-lab\\package.json",
+  "prettier.printWidth": 100,
+  "prettier.requireConfig": true,
 }

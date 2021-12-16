@@ -1,12 +1,12 @@
-import React from 'react';
 import { Formik } from 'formik';
+import React from 'react';
 import { useAppDispatch } from '../../../services/store/hooks';
 import { loginRequested } from '../../../services/store/user/userActions';
 import AuthentificationInput from './components/authInput';
+import SubmitButton from './components/authSubmitButton';
 import AuthentificationTitle from './components/authTitle';
 import InputError from './components/errorText';
 import AuthentificationPasswordInput from './components/passwordInput';
-import SubmitButton from './components/authSubmitButton';
 import StyledFormAuth from './components/styles/authForm';
 import StyledLinkUnderlinedAuth from './components/styles/authStyledLinkUnderlined';
 import { SignInSchema } from './validationSchemas';

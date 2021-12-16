@@ -1,5 +1,4 @@
 import React from 'react';
-
 import StyledControlPanel from './styles/viewMainFieldControlPanel';
 import StyledTitle from './styles/viewMainFieldControlTitle';
 

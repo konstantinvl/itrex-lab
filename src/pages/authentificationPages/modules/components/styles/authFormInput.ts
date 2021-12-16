@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Field } from 'formik';
+import styled from 'styled-components';
 
 const StyledInput = styled(Field)`
     margin-top: 40px;
@@ -15,6 +15,9 @@ const StyledInput = styled(Field)`
     background-position: 24px;
     background-repeat: no-repeat;
     cursor: pointer;
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.001) inset;
+    }
     &:focus-visible {
         outline: none;
         filter: drop-shadow(4px 32px rgba(218, 228, 255, 0.16));

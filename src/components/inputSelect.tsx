@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import AsyncSelect from 'react-select/async';
 import { rgba } from 'polished';
+import AsyncSelect from 'react-select/async';
+import styled from 'styled-components';
 
 const StyledSelect = styled(AsyncSelect)`
     margin-top: 16px;

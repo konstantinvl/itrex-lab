@@ -1,11 +1,11 @@
 /* eslint-disable react/display-name */
-import * as React from 'react';
 import { render as rtlRender, RenderOptions } from '@testing-library/react';
-import { Store } from 'redux';
+import * as React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { Store } from 'redux';
 import configureStore from 'redux-mock-store';
 import { RootState } from 'services/store/store';
-import { BrowserRouter } from 'react-router-dom';
 
 interface ExtendedRenderOptions extends RenderOptions {
     initialState: Partial<RootState>;

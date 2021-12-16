@@ -1,6 +1,6 @@
+import { rgba } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
-import { rgba } from 'polished';
 import { Appointment } from '../../../../services/interfaces';
 
 const Card = styled.div`
@@ -145,8 +145,9 @@ const OverallInfoAppointment = styled.div`
 
 const OverallMenu = styled.div`
     flex: 1;
-    background-position: center;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 80px;
     @media screen and (min-width: 0px) and (max-width: 561px) {
         min-width: 54px;

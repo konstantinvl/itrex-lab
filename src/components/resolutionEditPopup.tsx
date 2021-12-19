@@ -43,7 +43,6 @@ function ResolutionEditPopup(props: {
         } else {
             setIsSubmited(false);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [notification]);
 
     const dispatch = useAppDispatch();
@@ -58,7 +57,6 @@ function ResolutionEditPopup(props: {
                     resolution: 'afasfas',
                 }}
                 onSubmit={(values) => {
-                    console.log(values);
                     setIsSubmited(true);
                     const id: string = selectResolutionByID(state, appointmentID)?.id as string;
                     dispatch(

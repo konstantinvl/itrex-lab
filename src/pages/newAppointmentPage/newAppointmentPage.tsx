@@ -1,6 +1,6 @@
+import React from 'react';
 import StyledControlPanel from 'pages/viewPages/modules/components/styles/viewMainFieldControlPanel';
 import StyledTitle from 'pages/viewPages/modules/components/styles/viewMainFieldControlTitle';
-import React from 'react';
 import { getDoctorsBySpec, getFreeTime, getSpecializations } from 'services/axios/requests';
 import StyledMain from '../../components/styles/mainField';
 import StyledViewMainFieldInfo from '../viewPages/modules/components/styles/viewMainFieldInfo';

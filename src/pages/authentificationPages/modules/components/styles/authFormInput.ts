@@ -15,8 +15,10 @@ const StyledInput = styled(Field)`
     background-position: 24px;
     background-repeat: no-repeat;
     cursor: pointer;
+
     &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.001) inset;
+        box-shadow: none inset;
+        -webkit-box-shadow: none inset;
     }
     &:focus-visible {
         outline: none;

@@ -16,7 +16,6 @@ function DoctorsView(): JSX.Element {
         if (user.id) {
             dispatch(appointmentGetRequested(user.role_name));
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     return (

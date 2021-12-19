@@ -3,7 +3,6 @@ import BlueButton from 'components/styles/blueButton';
 import { Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { getDoctorsBySpec, getFreeTime, getSpecializations } from 'services/axios/requests';
 import { DoctorBySpec, SpecializationData } from 'services/interfaces';
 import { appointmentSetRequested } from 'services/store/appointment/appointmentActions';
 import { useAppDispatch, useAppSelector } from 'services/store/hooks';
@@ -68,12 +67,10 @@ function AppointmentFormik(props: {
 
     useEffect(() => {
         loadDoctors();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [doctorSpec]);
 
     useEffect(() => {
         loadFreeTime();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [appDate]);
 
     return (

@@ -1,10 +1,4 @@
-import {
-    ForkEffect,
-    select,
-    SelectEffect,
-    takeEvery,
-    /* takeEvery */ takeLatest,
-} from 'redux-saga/effects';
+import { ForkEffect, takeLatest } from 'redux-saga/effects';
 import {
     APPOINTMENT_GET_REQUESTED,
     APPOINTMENT_SET_REQUESTED,
@@ -31,11 +25,6 @@ function* mySaga(): Generator<ForkEffect<never>, void, unknown> {
     yield takeLatest(RESOLUTION_GET_REQUESTED, resolutionsGetRequest);
     yield takeLatest(RESOLUTION_SET_REQUESTED, resolutionSetRequest);
     yield takeLatest(RESOLUTION_UPDATE_REQUESTED, resolutionUpdateRequest);
-    yield takeEvery('*', function* logger(action): Generator<SelectEffect, void, unknown> {
-        const state = yield select();
-        console.log('action', action);
-        console.log('state after', state);
-    });
 }
 
 export default mySaga;

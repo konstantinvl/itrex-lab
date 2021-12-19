@@ -19,7 +19,6 @@ const StyledCalendar = styled(Calendar)`
                 font-weight: 600;
                 font-size: 17px;
                 line-height: 24px;
-                /* identical to box height, or 141% */
 
                 display: flex;
                 align-items: center;

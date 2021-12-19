@@ -28,7 +28,6 @@ export function* resolutionsGetRequest(action: PayloadAction<string>): Generator
 > {
     try {
         const resolutions: ResolutionsState = yield call(getResolutions, action.payload);
-        console.log(resolutions);
         yield put(resolutionsRequestFullfiled(resolutions));
     } catch (e) {
         yield put(notificationSendError((e as Error).message));
@@ -37,7 +36,19 @@ export function* resolutionsGetRequest(action: PayloadAction<string>): Generator
 
 export function* resolutionSetRequest(
     action: PayloadAction<{ resolution: ResolutionSetInterface; role: string }>,
-) {
+): Generator<
+    | CallEffect<NewResolutionInterface>
+    | PutEffect<{
+          payload: string;
+          type: string;
+      }>
+    | PutEffect<{
+          payload: NotificationState;
+          type: string;
+      }>,
+    void,
+    NewResolutionInterface
+> {
     try {
         const newResolution: NewResolutionInterface = yield call(
             setResolution,
@@ -55,7 +66,19 @@ export function* resolutionSetRequest(
 
 export function* resolutionUpdateRequest(
     action: PayloadAction<{ resolution: ResolutionSetInterface; role: string }>,
-) {
+): Generator<
+    | CallEffect<string>
+    | PutEffect<{
+          payload: string;
+          type: string;
+      }>
+    | PutEffect<{
+          payload: NotificationState;
+          type: string;
+      }>,
+    void,
+    string
+> {
     try {
         const newResolutionId: string = yield call(updateResolution, action.payload.resolution);
 

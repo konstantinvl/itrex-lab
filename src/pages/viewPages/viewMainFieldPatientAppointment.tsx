@@ -6,7 +6,7 @@ import PatientViewCard from './modules/components/patientViewCard';
 import StyledViewMainFieldInfo from './modules/components/styles/viewMainFieldInfo';
 import ViewMainFieldControl from './modules/components/viewMainFieldControls';
 
-function ViewMainFieldDoctorAppointment(): JSX.Element {
+function ViewMainFieldPatientAppointment(): JSX.Element {
     const { appointments } = useAppSelector((state) => state);
     return (
         <>
@@ -32,4 +32,4 @@ function ViewMainFieldDoctorAppointment(): JSX.Element {
     );
 }
 
-export default ViewMainFieldDoctorAppointment;
+export default ViewMainFieldPatientAppointment;

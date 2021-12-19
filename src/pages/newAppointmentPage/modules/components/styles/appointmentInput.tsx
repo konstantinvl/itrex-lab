@@ -6,7 +6,7 @@ const AppointmentInput = styled(Field)`
     background: #ffffff;
     width: 100%;
     height: 56px;
-    padding: 24px 16px;
+    padding: 16px 24px;
     border: 1px solid #dce0ec;
     box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
     border-radius: 8px;

@@ -7,11 +7,30 @@ import {
     NewAppointmentInterface,
     NotificationState,
 } from '../../interfaces';
-import { notificationSendError } from '../notification/notificationActions';
+import {
+    notificationSendError,
+    notificationSendSuccess,
+} from '../notification/notificationActions';
 import { resolutionsGetRequested } from '../resolutions/resolutionActions';
 import { appointmentGetRequested, appointmentsRequestFullfiled } from './appointmentActions';
 
-export function* appointmentsGetRequest(action: PayloadAction<string>) {
+export function* appointmentsGetRequest(action: PayloadAction<string>): Generator<
+    | CallEffect<AppointmentsData>
+    | PutEffect<{
+          payload: AppointmentsData;
+          type: string;
+      }>
+    | PutEffect<{
+          payload: string;
+          type: string;
+      }>
+    | PutEffect<{
+          payload: NotificationState;
+          type: string;
+      }>,
+    void,
+    AppointmentsData
+> {
     try {
         const appointments: AppointmentsData = yield call(getAppointments, action.payload);
 
@@ -44,6 +63,7 @@ export function* appointmentsSetRequest(
         );
 
         if (newAppointment.id) {
+            yield put(notificationSendSuccess('Appointment created succesfully'));
             yield put(appointmentGetRequested(action.payload.role));
         }
     } catch (e) {

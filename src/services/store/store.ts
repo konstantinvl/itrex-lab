@@ -6,9 +6,7 @@ import { resolutionsSlice } from './resolutions/resolutionReduser';
 import mySaga from './sagas';
 import { userSlice } from './user/userReduser';
 
-// создаем мидлвар saga
 const sagaMiddleware = createSagaMiddleware();
-// монтируем его в хранилище
 
 export const store = configureStore({
     reducer: {

@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResolutionsState } from '../../interfaces';
 import { RootState } from '../store';

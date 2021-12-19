@@ -1,7 +1,7 @@
+import React from 'react';
 import InlineNav from 'components/inlineNavigation';
 import StyledViewNavigation from 'pages/viewPages/modules/components/styles/viewNavigation';
 import StyledNavigationList from 'pages/viewPages/modules/components/styles/viewNavigationList';
-import React from 'react';
 import { useAppSelector } from 'services/store/hooks';
 
 function NewAppointmentNavigation(): JSX.Element {

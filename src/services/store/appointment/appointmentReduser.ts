@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction, SerializedError } from '@reduxjs/toolkit';
 import { AppointmentsData, AppointmentsState } from '../../interfaces';
 

@@ -14,8 +14,6 @@ export const notificationSlice = createSlice({
         sendNotification: (state, action: PayloadAction<NotificationState>) => {
             return { ...action.payload };
         },
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        deleteNotification: (_state) => ({ type: '', message: '' }),
     },
 });
 

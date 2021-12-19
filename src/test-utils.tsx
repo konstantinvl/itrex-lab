@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
-import { render as rtlRender, RenderOptions } from '@testing-library/react';
+/* eslint-disable react/require-default-props */
+import { render as rtlRender, RenderOptions, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -14,8 +15,6 @@ interface ExtendedRenderOptions extends RenderOptions {
 
 const TestWrapper =
     (store: Store) =>
-    // eslint-disable-next-line react/display-name
-    // eslint-disable-next-line react/require-default-props
     ({ children }: { children?: React.ReactNode }) =>
         (
             <Provider store={store}>
@@ -23,7 +22,6 @@ const TestWrapper =
             </Provider>
         );
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const render = (
     component: React.ReactElement,
     {
@@ -33,7 +31,7 @@ const render = (
     }: ExtendedRenderOptions = {
         initialState: {},
     },
-) => {
+): RenderResult => {
     return rtlRender(component, {
         wrapper: TestWrapper(store),
         ...renderOptions,
@@ -41,5 +39,5 @@ const render = (
 };
 
 export * from '@testing-library/react';
-// override the built-in render with our own
+
 export { render };

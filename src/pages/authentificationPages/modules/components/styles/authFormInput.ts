@@ -1,13 +1,20 @@
 import { Field } from 'formik';
 import styled from 'styled-components';
 
-const StyledInput = styled(Field)`
+const StyledInput = styled(Field).attrs((props: { invalid: boolean }) => ({
+    invalid: props.invalid,
+}))`
     margin-top: 40px;
     color: #a1abc9;
     width: 368px;
     height: 56px;
     background: #ffffff;
-    border: 1px solid #dce0ec;
+    border: ${(props) => {
+        if (props.invalid as boolean) {
+            return '1px solid #FF2567';
+        }
+        return '1px solid #DCE0EC';
+    }};
     box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.16);
     border-radius: 8px;
     padding-left: 64px;
@@ -16,10 +23,6 @@ const StyledInput = styled(Field)`
     background-repeat: no-repeat;
     cursor: pointer;
 
-    &:-webkit-autofill {
-        box-shadow: none inset;
-        -webkit-box-shadow: none inset;
-    }
     &:focus-visible {
         outline: none;
         filter: drop-shadow(4px 32px rgba(218, 228, 255, 0.16));

@@ -37,23 +37,43 @@ function SignUpFormik(): JSX.Element {
                 <StyledFormAuth>
                     <AuthentificationTitle title="Sign Up" img="" link={null} />
 
-                    <AuthentificationInput type="text" icon="user.png" placeholder="First Name" />
+                    <AuthentificationInput
+                        type="text"
+                        icon="user.png"
+                        placeholder="First Name"
+                        invalid={!!errors.firstname}
+                    />
                     <InputError
                         text={errors.firstname && touched.firstname ? errors.firstname : ''}
                     />
 
-                    <AuthentificationInput type="text" icon="user.png" placeholder="Last Name" />
+                    <AuthentificationInput
+                        type="text"
+                        icon="user.png"
+                        placeholder="Last Name"
+                        invalid={!!errors.lastname}
+                    />
                     <InputError text={errors.lastname && touched.lastname ? errors.lastname : ''} />
 
-                    <AuthentificationInput type="email" icon="email.png" placeholder="Email" />
+                    <AuthentificationInput
+                        type="email"
+                        icon="email.png"
+                        placeholder="Email"
+                        invalid={!!errors.email}
+                    />
                     <InputError text={errors.email && touched.email ? errors.email : ''} />
 
-                    <AuthentificationPasswordInput icon="password.png" placeholder="Password" />
+                    <AuthentificationPasswordInput
+                        icon="password.png"
+                        placeholder="Password"
+                        invalid={!!errors.password}
+                    />
                     <InputError text={errors.password && touched.password ? errors.password : ''} />
 
                     <AuthentificationPasswordInput
                         icon="passConfirm.png"
                         placeholder="Confirm Password"
+                        invalid={!!errors.confirmpassword}
                     />
                     <InputError
                         text={

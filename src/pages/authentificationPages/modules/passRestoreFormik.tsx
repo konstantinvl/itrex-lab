@@ -49,6 +49,7 @@ function PassRestoreFormik(): JSX.Element {
                                 type="email"
                                 icon="email.png"
                                 placeholder="Email"
+                                invalid={!!errors.email}
                             />
                             <InputError text={errors.email && touched.email ? errors.email : ''} />
                             <SubmitButton text="Send Reset Link" />

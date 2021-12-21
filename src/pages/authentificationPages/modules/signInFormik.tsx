@@ -33,10 +33,15 @@ function SignInFormik(): JSX.Element {
                         type="email"
                         icon="email.png"
                         placeholder="Email"
+                        invalid={!!errors.userName}
                     />
                     <InputError text={errors.userName && touched.userName ? errors.userName : ''} />
 
-                    <AuthentificationPasswordInput icon="password.png" placeholder="Password" />
+                    <AuthentificationPasswordInput
+                        icon="password.png"
+                        placeholder="Password"
+                        invalid={!!errors.password}
+                    />
                     <InputError text={errors.password && touched.password ? errors.password : ''} />
                     <SubmitButton text="Sign In" />
 

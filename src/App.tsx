@@ -19,7 +19,7 @@ function App(): JSX.Element {
 
     const navigation = useNavigate();
 
-    function sendToast(message: NotificationState): React.ReactText | void {
+    function sendToast(message: NotificationState): React.ReactText {
         switch (message.type) {
             case NotificationType.SUCCESS:
                 return toast.success(<ToastMessage notification={message} />, {
@@ -29,9 +29,8 @@ function App(): JSX.Element {
                 return toast.error(<ToastMessage notification={message} />, {
                     icon: <AlertIcon />,
                 });
-            // TO DO
             default:
-                return 1;
+                return 'No Notification';
         }
     }
 

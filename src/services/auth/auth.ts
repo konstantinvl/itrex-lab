@@ -8,15 +8,18 @@ class TokenStorage {
     }
 
     getAccessToken(): string {
-        return (
-            (JSON.parse(this.storage.getItem('user') as string) as SessionData)?.access_token || ''
-        );
+        if (JSON.parse(this.storage.getItem('user') as string)) {
+            return (JSON.parse(this.storage.getItem('user') as string) as SessionData).access_token;
+        }
+        return '';
     }
 
     getRefreshToken(): string {
-        return (
-            (JSON.parse(this.storage.getItem('user') as string) as SessionData)?.refresh_token || ''
-        );
+        if (JSON.parse(this.storage.getItem('user') as string)) {
+            return (JSON.parse(this.storage.getItem('user') as string) as SessionData)
+                .refresh_token;
+        }
+        return '';
     }
 }
 

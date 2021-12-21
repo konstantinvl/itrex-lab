@@ -30,6 +30,7 @@ module.exports = {
         'react/prop-types': 'off',
         // We don't want unused vars
         '@typescript-eslint/no-unused-vars': ['error'],
-        "react-hooks/exhaustive-deps":"off"
+        "react-hooks/exhaustive-deps":"off",
+        "import/no-named-as-default":"off"
     },
 };

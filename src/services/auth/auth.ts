@@ -9,13 +9,13 @@ class TokenStorage {
 
     getAccessToken(): string {
         return (
-            (JSON.parse(this.storage.getItem('user') as string) as SessionData).access_token || ''
+            (JSON.parse(this.storage.getItem('user') as string) as SessionData)?.access_token || ''
         );
     }
 
     getRefreshToken(): string {
         return (
-            (JSON.parse(this.storage.getItem('user') as string) as SessionData).refresh_token || ''
+            (JSON.parse(this.storage.getItem('user') as string) as SessionData)?.refresh_token || ''
         );
     }
 }

@@ -1,6 +1,6 @@
 import { AppWrapper, Header, Main } from 'components/styles/view';
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import ProfileMini from '../components/profileMini';
 import PatientNewAppointment from '../pages/newAppointmentPage/newAppointmentPage';
 import { useAppSelector } from '../services/store/hooks';
@@ -12,7 +12,13 @@ function View(): JSX.Element {
     return (
         <AppWrapper>
             <Header>
-                <img src={`${process.env.PUBLIC_URL}/images/icons/logo.png`} alt="Logo" />
+                <Link to="/view/" style={{ cursor: 'pointer' }}>
+                    <img
+                        style={{ cursor: 'pointer' }}
+                        src={`${process.env.PUBLIC_URL}/images/icons/logo.png`}
+                        alt="Logo"
+                    />
+                </Link>
                 <ProfileMini />
             </Header>
             <Main>

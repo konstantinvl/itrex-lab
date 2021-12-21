@@ -8,8 +8,12 @@ const InlineNav = styled(NavLink)`
     align-items: center;
     color: #7297ff;
     text-decoration: none;
+    cursor: pointer;
     &.active {
         color: #a1abc9;
+    }
+    &:hover {
+        text-decoration: underline;
     }
 `;
 

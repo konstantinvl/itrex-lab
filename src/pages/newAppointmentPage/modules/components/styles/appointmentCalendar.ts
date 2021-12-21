@@ -52,6 +52,13 @@ const StyledCalendar = styled(Calendar)`
             background: #ffffff;
             border: none;
             border-radius: 12px;
+            cursor: pointer;
+            &:hover {
+                color: #7297ff;
+            }
+            & > * {
+                cursor: pointer;
+            }
             &--now {
                 border: 1px solid #7297ff;
                 box-sizing: border-box;
@@ -61,11 +68,18 @@ const StyledCalendar = styled(Calendar)`
             &--active {
                 background: #7297ff;
                 color: #ffffff;
+                &:hover {
+                    color: #ffffff;
+                    text-decoration: underline;
+                }
             }
             &:disabled {
                 background: #dce0ec;
                 color: #ffffff;
                 border-radius: unset;
+                &:hover {
+                    color: #ffffff;
+                }
             }
         }
         &__month-view {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BlueButton from '../../../../modules/components/styles/blueButton';
+import BlueButton from '../../../../../components/styles/blueButton';
 
 const StyledBlueSubmitButton = styled(BlueButton)`
     margin-top: 40px;

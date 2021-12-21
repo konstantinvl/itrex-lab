@@ -1,13 +1,14 @@
 import React from 'react';
-
+import { useTitle } from 'react-use';
 import { useAppSelector } from '../../services/store/hooks';
-import ViewMainFieldControl from './modules/components/viewMainFieldControls';
 import CreateAppointmentButton from './modules/components/createAppointmentButton';
-import StyledViewMainFieldInfo from './modules/components/styles/viewMainFieldInfo';
 import NoAppointmentPatientsMessage from './modules/components/noAppointmentsPatientsMessage';
 import PatientViewCard from './modules/components/patientViewCard';
+import StyledViewMainFieldInfo from './modules/components/styles/viewMainFieldInfo';
+import ViewMainFieldControl from './modules/components/viewMainFieldControls';
 
-function ViewMainFieldDoctorAppointment(): JSX.Element {
+function ViewMainFieldPatientAppointment(): JSX.Element {
+    useTitle('Appointments');
     const { appointments } = useAppSelector((state) => state);
     return (
         <>
@@ -33,4 +34,4 @@ function ViewMainFieldDoctorAppointment(): JSX.Element {
     );
 }
 
-export default ViewMainFieldDoctorAppointment;
+export default ViewMainFieldPatientAppointment;

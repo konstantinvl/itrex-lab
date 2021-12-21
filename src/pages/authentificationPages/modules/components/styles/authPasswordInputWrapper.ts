@@ -3,7 +3,9 @@ import styled from 'styled-components';
 const StyledPasswordInputWrapper = styled.div`
     width: 368px;
     position: relative;
+
     margin-top: 40px;
+
     & label {
         position: absolute;
     }

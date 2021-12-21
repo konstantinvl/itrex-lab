@@ -1,13 +1,13 @@
-import styled from 'styled-components';
 import { rgba } from 'polished';
+import styled from 'styled-components';
 
 const StyledViewMainFieldInfo = styled.div`
     padding: 0px 32px 0px 28px;
     margin-top: 8px;
     width: 100%;
     flex: 1;
-    min-height: calc(100% - 40px);
-    max-height: calc(100% - 40px);
+    min-height: calc(100% - 70px);
+    max-height: calc(100% - 70px);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -24,10 +24,6 @@ const StyledViewMainFieldInfo = styled.div`
         border-radius: 8px;
         max-height: 97%;
     }
-    /* &::-webkit-scrollbar-button {
-        width: 0;
-        height: 0;
-    } */
     &::-webkit-scrollbar-thumb {
         background: ${rgba('#dce0ec', 0.56)};
         opacity: 0.56;

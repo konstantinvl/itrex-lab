@@ -5,6 +5,9 @@ import {
     DoctorBySpec,
     LoginInterface,
     NewAppointmentInterface,
+    NewResolutionInterface,
+    ResolutionSetInterface,
+    ResolutionsState,
     SessionData,
     SignUpInterface,
     SpecializationData,
@@ -73,4 +76,25 @@ export async function setAppointment(
     return newAppointment;
 }
 
-export default getProfile;
+export async function getResolutions(role: string): Promise<ResolutionsState> {
+    const resolutions: ResolutionsState = await axiosInstance
+        .get(`resolutions/${role}/me`, { params: { offset: '0', limit: '100' } })
+        .then((response) => response.data);
+    return resolutions;
+}
+
+export async function setResolution(
+    resolution: ResolutionSetInterface,
+): Promise<NewResolutionInterface> {
+    const newResolution: NewResolutionInterface = await axiosInstance
+        .post(`resolutions/`, { ...resolution })
+        .then((response) => response.data);
+    return newResolution;
+}
+
+export async function updateResolution(resolution: ResolutionSetInterface): Promise<string> {
+    const newResolution: string = await axiosInstance
+        .patch(`resolutions/${resolution.appointmentID}`, { resolution: resolution.resolution })
+        .then((response) => response.data);
+    return newResolution;
+}

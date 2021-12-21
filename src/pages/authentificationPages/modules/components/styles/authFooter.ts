@@ -15,7 +15,6 @@ const StyledAuthFooter = styled.div`
     @media screen and (min-width: 0px) and (max-width: 561px) {
         height: unset;
         margin-left: 10%;
-        // margin-top: 72px;
         margin-bottom: 44px;
         display: flex;
         flex-direction: column;

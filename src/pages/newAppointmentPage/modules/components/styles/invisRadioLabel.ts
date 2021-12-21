@@ -20,6 +20,7 @@ const RadioLabel = styled.label`
 
     box-shadow: 0px 4px 32px rgba(218, 228, 255, 0.24);
     border-radius: 8px;
+    cursor: pointer;
 `;
 
 export default RadioLabel;

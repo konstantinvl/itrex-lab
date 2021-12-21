@@ -15,6 +15,13 @@ const BlueButton = styled.button`
     color: #ffffff;
     &:disabled {
         background-color: #dce0ec;
+        &:hover {
+            background-color: #dce0ec;
+        }
+    }
+
+    &:hover {
+        background: #476cd3;
     }
     & span {
         font-weight: 600;

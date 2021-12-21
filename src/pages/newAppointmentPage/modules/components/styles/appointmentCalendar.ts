@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Calendar from 'react-calendar';
+import styled from 'styled-components';
 
 const StyledCalendar = styled(Calendar)`
     background: #ffffff;
@@ -19,7 +19,6 @@ const StyledCalendar = styled(Calendar)`
                 font-weight: 600;
                 font-size: 17px;
                 line-height: 24px;
-                /* identical to box height, or 141% */
 
                 display: flex;
                 align-items: center;
@@ -53,6 +52,13 @@ const StyledCalendar = styled(Calendar)`
             background: #ffffff;
             border: none;
             border-radius: 12px;
+            cursor: pointer;
+            &:hover {
+                color: #7297ff;
+            }
+            & > * {
+                cursor: pointer;
+            }
             &--now {
                 border: 1px solid #7297ff;
                 box-sizing: border-box;
@@ -62,11 +68,18 @@ const StyledCalendar = styled(Calendar)`
             &--active {
                 background: #7297ff;
                 color: #ffffff;
+                &:hover {
+                    color: #ffffff;
+                    text-decoration: underline;
+                }
             }
             &:disabled {
                 background: #dce0ec;
                 color: #ffffff;
                 border-radius: unset;
+                &:hover {
+                    color: #ffffff;
+                }
             }
         }
         &__month-view {

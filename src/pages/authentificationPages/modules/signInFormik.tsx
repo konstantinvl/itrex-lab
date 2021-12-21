@@ -1,12 +1,12 @@
-import React from 'react';
 import { Formik } from 'formik';
+import React from 'react';
 import { useAppDispatch } from '../../../services/store/hooks';
 import { loginRequested } from '../../../services/store/user/userActions';
 import AuthentificationInput from './components/authInput';
+import SubmitButton from './components/authSubmitButton';
 import AuthentificationTitle from './components/authTitle';
 import InputError from './components/errorText';
 import AuthentificationPasswordInput from './components/passwordInput';
-import SubmitButton from './components/authSubmitButton';
 import StyledFormAuth from './components/styles/authForm';
 import StyledLinkUnderlinedAuth from './components/styles/authStyledLinkUnderlined';
 import { SignInSchema } from './validationSchemas';
@@ -33,10 +33,15 @@ function SignInFormik(): JSX.Element {
                         type="email"
                         icon="email.png"
                         placeholder="Email"
+                        invalid={!!errors.userName}
                     />
                     <InputError text={errors.userName && touched.userName ? errors.userName : ''} />
 
-                    <AuthentificationPasswordInput icon="password.png" placeholder="Password" />
+                    <AuthentificationPasswordInput
+                        icon="password.png"
+                        placeholder="Password"
+                        invalid={!!errors.password}
+                    />
                     <InputError text={errors.password && touched.password ? errors.password : ''} />
                     <SubmitButton text="Sign In" />
 

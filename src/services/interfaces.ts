@@ -1,4 +1,5 @@
 import { SerializedError } from '@reduxjs/toolkit';
+import { NotificationType } from 'components/enums';
 
 export interface UserState {
     id: string;
@@ -13,6 +14,34 @@ export interface AppointmentsState {
     appointments: Appointment[];
     total: number;
 }
+
+export interface ResolutionsState {
+    resolutions: Resolution[];
+    total: 0;
+}
+
+export interface Resolution {
+    id: string;
+    appointment_id: string;
+    next_appointment_date: string;
+    resolution: string;
+    visit_date: string;
+    doctor?: Doctor;
+    patient?: Patient;
+}
+
+export interface ResolutionSetInterface {
+    resolution: string;
+    appointmentID: string;
+}
+
+export interface NewResolutionInterface {
+    id: string;
+    appointment_id: string;
+    next_appointment_date: string;
+    resolution: string;
+}
+
 export interface UserInterface {
     id: string;
     first_name: string;
@@ -37,21 +66,6 @@ export interface DoctorViewAppointment {
     appointment: string;
     appointmentDate: string;
     resolution: string;
-}
-
-export interface DoctorsData {
-    patients: DataSet;
-    resolutions: DataSet;
-}
-export interface PatientsData {
-    profile: DataSet;
-    appointments: DataSet;
-    resolutions: DataSet;
-}
-
-export interface DataSet {
-    title: string;
-    dataSet?: DoctorViewAppointment[] | PatientViewAppointment[];
 }
 
 /* auth interfaces */
@@ -135,4 +149,10 @@ export interface NewAppointmentInterface {
     reason: string;
     note: string;
     status: string;
+}
+/* notification interface */
+
+export interface NotificationState {
+    type: NotificationType.SUCCESS | NotificationType.ERROR | '';
+    message: string;
 }

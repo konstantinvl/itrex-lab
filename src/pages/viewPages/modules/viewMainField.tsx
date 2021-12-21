@@ -1,11 +1,10 @@
 import React from 'react';
-
-import { useAppSelector } from '../../../services/store/hooks';
 import { Appointment } from '../../../services/interfaces';
-import ViewCard from './components/viewCard';
-import ViewMainFieldControl from './components/viewMainFieldControls';
+import { useAppSelector } from '../../../services/store/hooks';
 import CreateAppointmentButton from './components/createAppointmentButton';
 import StyledViewMainFieldInfo from './components/styles/viewMainFieldInfo';
+import ViewCard from './components/viewCard';
+import ViewMainFieldControl from './components/viewMainFieldControls';
 
 function ViewMainField(props: { data: Appointment[]; title: string }): JSX.Element {
     const { user } = useAppSelector((state) => state);

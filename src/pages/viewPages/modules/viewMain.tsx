@@ -1,4 +1,4 @@
-import StyledMainField from 'pages/modules/components/styles/mainField';
+import StyledMainField from 'components/styles/mainField';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 

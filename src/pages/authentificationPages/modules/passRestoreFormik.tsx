@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
 import { Formik } from 'formik';
-
+import React, { useState } from 'react';
+import StyledLinkUnderlined from '../../../components/styles/linkUnderlined';
 import AuthentificationInput from './components/authInput';
+import SubmitButton from './components/authSubmitButton';
 import AuthentificationTitle from './components/authTitle';
 import InputError from './components/errorText';
-import SubmitButton from './components/authSubmitButton';
 import StyledFormAuth from './components/styles/authForm';
-import StyledLinkUnderlined from '../../modules/components/styles/linkUnderlined';
 import StyledText from './components/styles/authFormText';
 import { PassRestoreSchema } from './validationSchemas';
 
@@ -50,6 +49,7 @@ function PassRestoreFormik(): JSX.Element {
                                 type="email"
                                 icon="email.png"
                                 placeholder="Email"
+                                invalid={!!errors.email}
                             />
                             <InputError text={errors.email && touched.email ? errors.email : ''} />
                             <SubmitButton text="Send Reset Link" />

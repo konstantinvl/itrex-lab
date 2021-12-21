@@ -1,10 +1,10 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { fireEvent, waitFor } from '@testing-library/react';
-import { render } from 'test-utils';
+import React from 'react';
 import { DoctorBySpec, SpecializationData } from 'services/interfaces';
+import { render } from 'test-utils';
 import AppointmentFormik from './newAppointmentFormik';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function getDoctorsBySpec(_spec: string): Promise<DoctorBySpec[]> {
     return [
         { first_name: 'FN1', last_name: 'LN1', id: '1' },
@@ -12,7 +12,6 @@ async function getDoctorsBySpec(_spec: string): Promise<DoctorBySpec[]> {
     ];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function getFreeTime(date: string, doctorID: string): Promise<string[]> {
     return ['2021-11-23T13:00:00.000Z', '2021-11-23T14:00:00.000Z'];
 }

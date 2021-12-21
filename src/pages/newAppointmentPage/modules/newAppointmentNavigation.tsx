@@ -1,9 +1,8 @@
+import React from 'react';
+import InlineNav from 'components/inlineNavigation';
 import StyledViewNavigation from 'pages/viewPages/modules/components/styles/viewNavigation';
 import StyledNavigationList from 'pages/viewPages/modules/components/styles/viewNavigationList';
-
-import React from 'react';
 import { useAppSelector } from 'services/store/hooks';
-import InlineNav from 'sharedComponents/inlineNavigation';
 
 function NewAppointmentNavigation(): JSX.Element {
     const { user } = useAppSelector((state) => state);

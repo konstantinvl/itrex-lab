@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledLinkBlueUnderlined from '../../../modules/components/styles/linkUnderlined';
+import StyledLinkBlueUnderlined from '../../../../components/styles/linkUnderlined';
 import StyledAuthFooter from './styles/authFooter';
 
 function AuthentificationFooter(props: {

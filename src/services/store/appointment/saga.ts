@@ -5,7 +5,13 @@ import {
     AppointmentsData,
     AppointmentSetInterface,
     NewAppointmentInterface,
+    NotificationState,
 } from '../../interfaces';
+import {
+    notificationSendError,
+    notificationSendSuccess,
+} from '../notification/notificationActions';
+import { resolutionsGetRequested } from '../resolutions/resolutionActions';
 import { appointmentGetRequested, appointmentsRequestFullfiled } from './appointmentActions';
 
 export function* appointmentsGetRequest(action: PayloadAction<string>): Generator<
@@ -15,8 +21,12 @@ export function* appointmentsGetRequest(action: PayloadAction<string>): Generato
           type: string;
       }>
     | PutEffect<{
+          payload: string;
           type: string;
-          message: unknown;
+      }>
+    | PutEffect<{
+          payload: NotificationState;
+          type: string;
       }>,
     void,
     AppointmentsData
@@ -25,8 +35,9 @@ export function* appointmentsGetRequest(action: PayloadAction<string>): Generato
         const appointments: AppointmentsData = yield call(getAppointments, action.payload);
 
         yield put(appointmentsRequestFullfiled(appointments));
+        yield put(resolutionsGetRequested(action.payload));
     } catch (e) {
-        yield put({ type: 'USER_FETCH_FAILED', message: e });
+        yield put(notificationSendError((e as Error).message));
     }
 }
 
@@ -39,8 +50,8 @@ export function* appointmentsSetRequest(
           type: string;
       }>
     | PutEffect<{
+          payload: NotificationState;
           type: string;
-          message: unknown;
       }>,
     void,
     NewAppointmentInterface
@@ -52,9 +63,10 @@ export function* appointmentsSetRequest(
         );
 
         if (newAppointment.id) {
+            yield put(notificationSendSuccess('Appointment created succesfully'));
             yield put(appointmentGetRequested(action.payload.role));
         }
     } catch (e) {
-        yield put({ type: 'USER_FETCH_FAILED', message: e });
+        yield put(notificationSendError((e as Error).message));
     }
 }

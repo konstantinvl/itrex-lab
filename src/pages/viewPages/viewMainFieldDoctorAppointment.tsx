@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTitle } from 'react-use';
 import { useAppSelector } from '../../services/store/hooks';
 import CreateAppointmentButton from './modules/components/createAppointmentButton';
 import DoctorViewCard from './modules/components/doctorViewCard';
@@ -7,6 +8,7 @@ import StyledViewMainFieldInfo from './modules/components/styles/viewMainFieldIn
 import ViewMainFieldControl from './modules/components/viewMainFieldControls';
 
 function ViewMainFieldDoctorAppointment(): JSX.Element {
+    useTitle('Appointments');
     const { appointments } = useAppSelector((state) => state);
     return (
         <>

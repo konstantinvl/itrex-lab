@@ -25,6 +25,7 @@
     "react-select": "^5.2.1",
     "react-toastify": "^8.1.0",
     "react-token-auth": "^2.2.0",
+    "react-use": "^17.3.1",
     "redux": "^4.1.2",
     "redux-mock-store": "^1.5.4",
     "redux-saga": "^1.1.3",

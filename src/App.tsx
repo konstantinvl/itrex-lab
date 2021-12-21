@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import StyledToastContainer from 'components/styles/toastContainer';
 import ToastMessage from 'components/toastMessage';
 import React, { useEffect } from 'react';
+import { useTitle } from 'react-use';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import AlertIcon from 'components/alertIcon';
@@ -42,6 +42,8 @@ function App(): JSX.Element {
     useEffect(() => {
         sendToast(notification);
     }, [notification]);
+
+    useTitle('Palm Clinic');
 
     return (
         <>

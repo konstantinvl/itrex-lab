@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTitle } from 'react-use';
 import { useAppSelector } from '../../services/store/hooks';
 import DoctorsResolutionCard from './modules/components/doctorsResolutionCard';
 import NoAppointmentDoctorsMessage from './modules/components/noAppointmentsDoctorsMessage';
@@ -7,6 +8,7 @@ import StyledViewMainFieldInfo from './modules/components/styles/viewMainFieldIn
 import ViewMainFieldControl from './modules/components/viewMainFieldControls';
 
 function ViewMainFieldDoctorResolutions(): JSX.Element {
+    useTitle('Resolutions');
     const { resolutions } = useAppSelector((state) => state);
     return (
         <>
